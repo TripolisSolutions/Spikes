@@ -1,0 +1,12 @@
+Spike - Dynamic Database Connector
+
+Description:
+Depending on the logged in user it connects to a different sqlite database using DataMapper.
+
+Users and passwords:
+user1@test.com:test
+user2@test.com:test
+user3@test.com:test
+
+Setup:
+check out and run 'bundle install' in project folder.
