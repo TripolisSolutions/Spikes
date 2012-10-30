@@ -1,0 +1,26 @@
+<%= form_for(@twitter_account) do |f| %>
+  <% if @twitter_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@twitter_account.errors.count, "error") %> prohibited this twitter_account from being saved:</h2>
+
+      <ul>
+      <% @twitter_account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= label_tag(:username, "Username") %>
+    <%= f.text_field :username %>
+
+    <%= label_tag(:full_name, "Full name") %>
+    <%= f.text_field :full_name %>
+
+    <%= label_tag(:enabled, "Enabled") %>
+    <%= f.check_box :enabled %>
+
+    <%= f.submit %>
+  </div>
+<% end %>
