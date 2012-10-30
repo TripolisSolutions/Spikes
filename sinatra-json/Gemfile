@@ -1,0 +1,12 @@
+# Gemfile
+source :rubygems
+
+gem "rake"
+gem "sinatra"
+gem "json"
+gem "activerecord"
+gem "shotgun"
+gem "rack-test"
+gem "activerecord-postgresql-adapter"
+gem "pg"
+gem "sinatra-activerecord"

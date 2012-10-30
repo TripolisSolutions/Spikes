@@ -1,0 +1,6 @@
+require 'rake'
+require 'active_record'
+require 'yaml'
+require 'logger'
+require './app'
+require 'sinatra/activerecord/rake'

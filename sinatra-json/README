@@ -1,0 +1,10 @@
+Startup:
+Commandline in project dir rackup -s webrick  -p 4568 (webrick can also be replaced by mongrel or thin if wanted and installed)
+
+or with shotgun as sinatra doesnt relaod after touching code. With shotgun it does:
+shotgun --server=webrick --port=4568 config.ru
+
+
+Adding controllers:
+Create a new file in folder app/controllers and add this filename in init.rb in app/controllers directory
+This file was modified by JetBrains RubyMine 4.5.4 for binding GitHub repository
