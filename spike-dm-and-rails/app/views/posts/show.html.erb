@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @post.text %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<div>
+  <h2>Comments:</h2>
+  <% @post.comments.each do |comment| %>
+    <div id="comments">
+      <%= comment.created_on %><br/>
+      <%= comment.comment %>
+    </div>
+  <% end %>
+</div>
+<div>
+  <h2>Add Comment:</h2>
+    <%= form_for(@post.comments.new) do |f| %>
+    <div class="field">
+      <%= f.text_area :comment, placeholder: "Compose new comment..." %>
+    </div>
+    <input type="hidden" id="post_id" name="post_id" value="<%= @post.id %>" />
+    <%= f.submit "Post comment", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
+
+

@@ -1,0 +1,3 @@
+== Rails using dataMapper
+
+Simple sample application with two models using dataMapper instead of activeRecord.
