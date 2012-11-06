@@ -6,6 +6,12 @@ gem 'pg'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.0"
+
+  gem 'spork-rails'
+  gem 'watchr'
+  gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
+  gem 'shoulda-matchers'
 end
 
 # To use Jbuilder templates for JSON
@@ -19,3 +25,4 @@ end
 
 # To use debugger
 # gem 'debugger'
+
