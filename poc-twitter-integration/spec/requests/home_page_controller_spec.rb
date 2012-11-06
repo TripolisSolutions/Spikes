@@ -10,6 +10,7 @@ describe HomePageController do
 
     describe "a not signed-in user" do
       it {  should have_link("Sign in") }
+      it { should have_selector('h1', text: 'Please sign in first') }
     end
 
     describe "a signed-in user" do
@@ -20,6 +21,11 @@ describe HomePageController do
       end
 
       it {should have_link("Sign out")}
+
+      describe "Twitter profile" do
+        it { should have_selector('h2', text: 'Tripolis Solutions') }
+        it { should have_selector('h3', text: 'tripolis') }
+      end
 
     end
 

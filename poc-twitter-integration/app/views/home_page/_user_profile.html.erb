@@ -1,0 +1,12 @@
+<div class="profile-header">
+  <a href="http://twitter.com">
+  <%= avatar_for(current_user)  %></a>
+  <div class="profile-header-inner">
+    <h2 class="fullname"><%= profile_link_for(current_user, current_user.realName) %></h2>
+    <h3 class="username"><%= profile_link_for(current_user, "@#{current_user.name}", class:"pretty-link" ) %></h3>
+  </div>
+</div>
+<div class="profile-extended">
+  <div class="bio"><%=raw auto_link(current_user.description) %></div>
+  <div class="location"><%= current_user.location %></div>
+</div>

@@ -33,4 +33,5 @@ end
 
 # Twitter integration
 gem 'twitter'
+gem 'twitter-text'
 gem 'omniauth-twitter'
