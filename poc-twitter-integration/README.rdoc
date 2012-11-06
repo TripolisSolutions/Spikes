@@ -1,0 +1,3 @@
+== POC Twitter Integration
+
+Sample Rails app to integratie with Twitter, post a tweet and display tweets.
