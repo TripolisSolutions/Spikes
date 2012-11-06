@@ -1,6 +1,6 @@
 ImageRepository::Application.routes.draw do
   get "image_library/list"
-
+  get "image_library/show_image"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

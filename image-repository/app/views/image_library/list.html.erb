@@ -1,8 +1,8 @@
 <h1>Rackspace images</h1>
-<p>the image count is: <%=  @images.length %></p>
+<p>the image count is: <%=  @imageNames.length %></p>
 
-<% @images.each do |image| %>
+<% @imageNames.each do |image| %>
 
-    <%= image %> <br>
+    <%= image_tag url_for(:controller => "image_library", :action => "show_image", :imageName => image) %>
 
 <% end %>
