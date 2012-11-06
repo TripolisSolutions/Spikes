@@ -58,11 +58,16 @@ module RailsApi
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
+
+    # Configuration for generator
     config.generators do |g|
       g.orm             :active_record
-      g.template_engine :erb
       g.test_framework  :rspec, :fixture => false
-      g.stylesheets     false
+      g.assets  false
+      g.template_engine false
+      g.stylesheets false
+      g.view_specs false
+      g.helper false
     end
   end
 end
