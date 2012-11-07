@@ -40,7 +40,7 @@ describe HomePageController do
         it { should have_field("tweet_status") }
         it { should have_button("Tweet") }
 
-        describe "post a tweet", :js => true do
+        describe "post a tweet", js: true do
 
             before do
               Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "1234") }
@@ -54,7 +54,7 @@ describe HomePageController do
             it { should have_notice_message }
         end
 
-        describe "Twitter API error", :js => true do
+        describe "Twitter API error", js: true do
 
           before do
             Twitter::Client.any_instance.should_receive(:update) { raise Twitter::Error::AlreadyRetweeted }
