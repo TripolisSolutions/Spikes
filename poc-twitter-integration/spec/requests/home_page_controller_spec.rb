@@ -24,7 +24,7 @@ describe HomePageController do
         click_link("Sign out")
       end
 
-      it {should have_link("Sign out")}
+      it { should have_link("Sign out") }
 
       describe "Twitter profile" do
         it { should have_selector('h2', text: 'Tripolis Solutions') }
@@ -37,10 +37,10 @@ describe HomePageController do
           fill_in "tweet_status", with: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit"
         end
 
-        it { should have_field("tweet_status")}
-        it { should have_button("Tweet")}
+        it { should have_field("tweet_status") }
+        it { should have_button("Tweet") }
 
-        describe "post a tweet",:js => true do
+        describe "post a tweet", :js => true do
 
             before do
               Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "1234") }
@@ -52,19 +52,17 @@ describe HomePageController do
             end
 
             it { should have_notice_message }
-
         end
 
-        describe "Twitter API error",:js => true do
+        describe "Twitter API error", :js => true do
 
           before do
             Twitter::Client.any_instance.should_receive(:update) { raise Twitter::Error::AlreadyRetweeted }
             click_button "Tweet"
           end
 
-          it {
-            should have_error_message }
-          end
+          it { should have_error_message }
+        end
 
       end
 
