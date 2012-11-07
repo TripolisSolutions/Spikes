@@ -3,6 +3,7 @@ PocTwitterIntegration::Application.routes.draw do
   root to: 'home_page#index'
 
   resources :sessions, only: [:create, :destroy]
+  resources :tweets, only: [:create]
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/signout', to: 'sessions#destroy'

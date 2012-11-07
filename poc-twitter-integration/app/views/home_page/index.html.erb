@@ -2,8 +2,10 @@
 <% if signed_in? %>
     <div class="span4">
         <%= render :partial => 'user_profile' %>
+        <%= render :partial => 'tweetform' %>
     </div>
     <div class="span5 offset4">
+      <div id="flash" style="display: none;"><!-- insert messages here --></div>
       <%= render :partial => 'tweets' %>
     </div>
 <% else %>

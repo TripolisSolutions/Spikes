@@ -10,6 +10,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 OmniAuth.config.test_mode = true
 
+Capybara.default_wait_time = 5
+
 RSpec.configure do |config|
   # ## Mock Framework
   #

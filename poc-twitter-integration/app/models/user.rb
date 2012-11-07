@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :avatarUrl, :description, :location, :name, :realName, :userId
+  attr_accessible :avatarUrl, :description, :location, :name, :realName, :uid
+
+  has_many :tweets, dependent: :destroy
 
   def self.from_omniauth(auth)
-    user = find_by_userId(auth["uid"]) || create_from_omniauth(auth)
+    user = find_by_uid(auth["uid"]) || create_from_omniauth(auth)
     user.oauth_token = auth["credentials"]["token"]
     user.oauth_secret = auth["credentials"]["secret"]
     user.save!
@@ -11,7 +13,7 @@ class User < ActiveRecord::Base
 
   def self.create_from_omniauth(auth)
     create! do |user|
-      user.userId = auth["uid"]
+      user.uid = auth["uid"]
       user.name = auth["info"]["nickname"]
       user.realName = auth["info"]["name"]
       user.location = auth["info"]["location"]

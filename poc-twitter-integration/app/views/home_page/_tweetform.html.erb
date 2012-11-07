@@ -1,0 +1,13 @@
+<%= form_for(@tweet,
+             html: { method: :post, remote: true}) do |f| %>
+<div>
+  <div class="tweet-content">
+    <%= f.text_area :status, placeholder: "Compose new tweet..." %>
+  </div>
+  <div class="toolbar">
+    <div class="tweet-button">
+      <%= f.submit "Tweet", class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+<% end %>
