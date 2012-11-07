@@ -112,6 +112,28 @@ profile-header .fullname {
   height: 80px;
 }
 
+/* tweets */
+.tweet {
+  border-bottom: 1px solid #E8E8E8;
+  min-height: 51px;
+  padding: 9px 12px;
+  position: relative;
+}
+
+.tweet p {
+  word-wrap: break-word;
+}
+
+.tweet .content {
+  margin-left: 58px;
+}
+
+.stream-item-header .avatar, .permalink-header .avatar {
+  left: 12px;
+  position: absolute;
+  top: 12px;
+}
+
 /* miscellaneous */
 
 .debug_dump {

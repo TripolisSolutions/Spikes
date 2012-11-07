@@ -27,4 +27,10 @@ class User < ActiveRecord::Base
       @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_token_secret: oauth_secret)
   end
 
+  def timeline
+    Rails.cache.fetch("timeline/#{id}", expires_in: 15.minutes) do
+      twitter.home_timeline
+    end
+  end
+
 end

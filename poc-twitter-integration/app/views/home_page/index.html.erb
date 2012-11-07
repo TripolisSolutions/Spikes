@@ -4,9 +4,9 @@
         <%= render :partial => 'user_profile' %>
         <%= render :partial => 'tweetform' %>
     </div>
-    <div class="span5 offset4">
+    <div class="span5">
       <div id="flash" style="display: none;"><!-- insert messages here --></div>
-      <%= render :partial => 'tweets' %>
+      <div id="timeline"><%= render :partial => 'tweets' %></div>
     </div>
 <% else %>
     <div class="center hero-unit">
