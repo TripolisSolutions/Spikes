@@ -6,6 +6,8 @@ gem 'pg'
 
 gem "devise", ">= 2.1.0"
 
+gem "omniauth-tripolis"
+
 group :test, :development do
   gem 'spork-rails'
   gem "rspec-rails", "~> 2.0"
