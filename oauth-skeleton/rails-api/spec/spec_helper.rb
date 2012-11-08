@@ -46,6 +46,7 @@ Spork.prefork do
       GC.enable
       counter = 0
     end
+    require 'email_spec'
   end
 end
 

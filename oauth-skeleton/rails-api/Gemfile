@@ -4,15 +4,21 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
-group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+gem "devise", ">= 2.1.0"
 
+group :test, :development do
   gem 'spork-rails'
+  gem "rspec-rails", "~> 2.0"
+end
+
+group :test do
   gem 'watchr'
   gem 'factory_girl_rails'
   gem 'simplecov', :require => false
   gem 'shoulda-matchers'
+  gem "email_spec", ">= 1.2.1"
 end
+
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
