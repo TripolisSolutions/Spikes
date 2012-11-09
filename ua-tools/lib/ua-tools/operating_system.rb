@@ -8,10 +8,10 @@ module UaTools
     # version, e.g. '8.0.1'
     # device, e.g. :desktop
 
-    attr_reader :platform
+    attr_reader :platform, :device
 
     def initialize(user_agent_string)
-      @device = :mobile
+      @device = detectDevice(user_agent_string)
       @platform = :ios
     end
 
@@ -20,8 +20,22 @@ module UaTools
     end
 
     def mobile?
-      true
+      @device == :mobile
     end
+
+    def tablet?
+      @device == :tablet
+    end
+
+    private
+
+      def detectDevice string
+        case string
+          when /ipad/i    ; :tablet
+          when /iphone/i  ; :mobile
+          else ; :unknown
+        end
+      end
 
   end
 
