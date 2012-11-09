@@ -30,12 +30,14 @@ module UaTools
 
       def detectDevice string
         case string
-          when /ipad/i    ; return :ios, :tablet
-          when /iphone/i  ; return :ios, :mobile
-          when /(android).*(mobile safari)/i ; return :android, :mobile
-          when /(android).*(?<!online|large screen).(safari)/i ; return :android, :tablet
-          when /googletv/i  ; return :android, :tv
-          else ; :unknown
+          when /windows nt/i                                    ; return :windows, :desktop
+          when /ipad/i                                          ; return :ios, :tablet
+          when /iphone/i                                        ; return :ios, :mobile
+          when /mac os x/i                                      ; return :macosx, :desktop
+          when /(android).*(mobile safari)/i                    ; return :android, :mobile
+          when /(android).*(?<!online|large screen).(safari)/i  ; return :android, :tablet
+          when /googletv/i                                      ; return :android, :tv
+          else                                                  ; return :unknown, :unknown
         end
       end
 
