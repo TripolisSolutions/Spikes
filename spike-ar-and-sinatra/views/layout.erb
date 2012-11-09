@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title><%= title %></title>
+  <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Simple Blog</a>
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Me</a></li>
+        <li><a href="/posts/new">New Post</a></li>
+        <% if post_show_page?  %>
+            <li><a href="/posts/<%= @post.id %>/edit">Edit Post</a></li>
+            <li><form style="margin: 0;" action="/posts/<%= @post.id %>" method="post">
+              <input type="hidden" name="_method" value="delete" />
+              <button class="btn" style="border-style: none;"  type="submit" value="Delete Post">Delete</button>
+            </form></li>
+         <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+  <div class="row">
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>

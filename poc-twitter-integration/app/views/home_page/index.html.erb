@@ -1,0 +1,16 @@
+<div class="row">
+<% if signed_in? %>
+    <div class="span4">
+        <%= render :partial => 'user_profile' %>
+        <%= render :partial => 'tweetform' %>
+    </div>
+    <div class="span5">
+      <div id="flash" style="display: none;"><!-- insert messages here --></div>
+      <div id="timeline"><%= render :partial => 'tweets' %></div>
+    </div>
+<% else %>
+    <div class="center hero-unit">
+    <h1>Please sign in first</h1>
+    </div>
+<% end %>
+</div>

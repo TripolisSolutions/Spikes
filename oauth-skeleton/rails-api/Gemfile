@@ -1,0 +1,36 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.8'
+
+gem 'pg'
+
+gem "devise", ">= 2.1.0"
+
+gem "omniauth-tripolis"
+
+group :test, :development do
+  gem 'spork-rails'
+  gem "rspec-rails", "~> 2.0"
+end
+
+group :test do
+  gem 'watchr'
+  gem 'factory_girl_rails'
+  gem 'simplecov', :require => false
+  gem 'shoulda-matchers'
+  gem "email_spec", ">= 1.2.1"
+end
+
+
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+# gem 'debugger'
+

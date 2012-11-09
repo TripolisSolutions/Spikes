@@ -1,0 +1,21 @@
+<% current_user.timeline.each do |tweet| %>
+    <div class="tweet">
+      <div class="content">
+        <div class="stream-item-header">
+          <small class="time">
+            <!-- display time -->
+          </small>
+          <a href="...">
+            <img class="avatar" src="<%= tweet.user.profile_image_url %>"/>
+            <strong class="fullname"><%= tweet.user.name %></strong>
+            <span>‏</span>
+            <span class="username js-action-profile-name">
+                <s>@</s>
+                <b><%= tweet.user.screen_name %></b>
+            </span>
+          </a>
+        </div>
+        <p><%=  raw auto_link(tweet.text) %></p>
+      </div>
+    </div>
+<% end %>

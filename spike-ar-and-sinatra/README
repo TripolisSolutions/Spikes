@@ -1,0 +1,13 @@
+Spike - DataMapper vs. ActiveRecord
+
+POC: Using ActiveRecord with Sinatra
+
+Source: http://danneu.com/posts/15-a-simple-blog-with-sinatra-and-active-record-some-useful-tools
+
+Installation:
+bundle install
+rake db:migrate
+
+Start server: shotgun
+
+Tux interactive console: tux
