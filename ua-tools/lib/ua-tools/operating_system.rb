@@ -33,7 +33,8 @@ module UaTools
           when /ipad/i    ; return :ios, :tablet
           when /iphone/i  ; return :ios, :mobile
           when /(android).*(mobile safari)/i ; return :android, :mobile
-          when /(android).*(?<!online).(safari)/i ; return :android, :tablet
+          when /(android).*(?<!online|large screen).(safari)/i ; return :android, :tablet
+          when /googletv/i  ; return :android, :tv
           else ; :unknown
         end
       end
