@@ -11,8 +11,7 @@ module UaTools
     attr_reader :platform, :device
 
     def initialize(user_agent_string)
-      @device = detectDevice(user_agent_string)
-      @platform = :ios
+      @platform, @device = detectDevice(user_agent_string)
     end
 
     def to_s
@@ -31,8 +30,10 @@ module UaTools
 
       def detectDevice string
         case string
-          when /ipad/i    ; :tablet
-          when /iphone/i  ; :mobile
+          when /ipad/i    ; return :ios, :tablet
+          when /iphone/i  ; return :ios, :mobile
+          when /(android).*(mobile safari)/i ; return :android, :mobile
+          when /(android).*(?<!online).(safari)/i ; return :android, :tablet
           else ; :unknown
         end
       end

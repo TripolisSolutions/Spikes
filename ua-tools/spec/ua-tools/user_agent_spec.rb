@@ -6,17 +6,29 @@ module UaTools
     describe "detects mobile devices" do
 
       it "recognizes iOS" do
-        iphone_strings = [
+        user_agent_strings = [
             "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; nl-nl) AppleWebKit/420.1 (KHTML, like Gecko)",
             "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko)",
             "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420.1 (KHTML, like Gecko) Version/3.0 Mobile/4A93 Safari/419.3"
         ]
-
-        iphone_strings.each do |user_agent_string|
+        user_agent_strings.each do |user_agent_string|
           test(user_agent_string, {platform: :ios, device: :mobile})
         end
 
       end
+
+      it "recognizes Android phones" do
+        user_agent_strings = [
+            "Mozilla/5.0 (Linux; U; Android 4.0.1; en-us; Galaxy Nexus Build/ICL41) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"
+        ]
+        user_agent_strings.each do |user_agent_string|
+          test(user_agent_string, {platform: :android, device: :mobile})
+        end
+
+      end
+
+
+
     end
 
     describe "detects tablet devices" do
@@ -28,6 +40,18 @@ module UaTools
             "Mozilla/5.0 (iPad; CPU OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3" ]
         iPad_strings.each do |user_agent_string|
           test(user_agent_string, {platform: :ios, device: :tablet})
+        end
+      end
+
+      it "recognized popular android tablets" do
+        android_tablet_strings = [
+            "Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13",
+            "Mozilla/5.0 (Linux; U; Android 3.0.1; en-us; Xoom Build/HRI66) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13",
+            "Mozilla/5.0 (Linux; U; Android 3.1; en-us; GT-P7510 Build/HMJ37) AppleWebKit/534.13 (KHTML, like Gecko) Version/4.0 Safari/534.13",
+            "Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; Transformer TF101 Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30",
+            "Mozilla/5.0 (Linux; U; Android-4.0.3; en-us; Xoom Build/IML77) AppleWebKit/535.7 (KHTML, like Gecko) CrMo/16.0.912.75 Safari/535.7"]
+        android_tablet_strings.each do |user_agent_string|
+          test(user_agent_string, {platform: :android, device: :tablet})
         end
       end
     end
