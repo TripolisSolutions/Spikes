@@ -94,9 +94,23 @@ module UaTools
           when :mobile
             user_agent.os.mobile?.should be_true
             user_agent.os.tablet?.should_not be_true
+            user_agent.os.desktop?.should_not be_true
+            user_agent.os.webtv?.should_not be_true
           when :tablet
-            user_agent.os.mobile?.should_not be_true
             user_agent.os.tablet?.should be_true
+            user_agent.os.mobile?.should_not be_true
+            user_agent.os.desktop?.should_not be_true
+            user_agent.os.webtv?.should_not be_true
+          when :desktop
+            user_agent.os.desktop?.should be_true
+            user_agent.os.mobile?.should_not be_true
+            user_agent.os.tablet?.should_not be_true
+            user_agent.os.webtv?.should_not be_true
+          when :webtv
+            user_agent.os.webtv?.should be_true
+            user_agent.os.mobile?.should_not be_true
+            user_agent.os.tablet?.should_not be_true
+            user_agent.os.desktop?.should_not be_true
         end
         user_agent.os.device.should == expect[:device]
       end

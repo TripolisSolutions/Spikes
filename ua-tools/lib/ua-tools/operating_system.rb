@@ -26,6 +26,14 @@ module UaTools
       @device == :tablet
     end
 
+    def desktop?
+      @device == :desktop
+    end
+
+    def webtv?
+      @device == :webtv
+    end
+
     private
 
       def detectDevice string
