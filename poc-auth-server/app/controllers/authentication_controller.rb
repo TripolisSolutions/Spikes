@@ -3,6 +3,7 @@ class AuthenticationController < ApplicationController
   def login
     @user = User.find_by_username(params[:username])
     @oauth2 = Songkick::OAuth2::Provider.parse(@user, env)
+    @clients = Client.all 
 
     if !@user.nil?
       session[:user_id] = @user.id

@@ -14,6 +14,11 @@
   </fieldset>
 
   <fieldset>
+    <label for="client_id">Client</label>
+    <%= select_tag "client_id", options_from_collection_for_select(@clients, "client_id", "name") %>
+  </fieldset>
+
+  <fieldset>
     <input type="submit" value="Sign in">
   </fieldset>
 </form>
