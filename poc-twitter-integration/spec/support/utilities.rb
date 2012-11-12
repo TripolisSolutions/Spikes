@@ -27,4 +27,4 @@ def mock_twitter_auth
           secret: "123"
       }
   })
-  end
+end
