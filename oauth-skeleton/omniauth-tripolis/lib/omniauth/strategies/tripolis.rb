@@ -5,8 +5,6 @@ module OmniAuth
     class Tripolis < OmniAuth::Strategies::OAuth2
       option :client_options, {
         :site => 'http://127.0.0.1:4000',
-        :authorize_path => '/login/oauth/authorize',
-        :token_path => '/login/oauth/access_token'
       }
       option :name, "tripolis"
 
@@ -19,7 +17,6 @@ module OmniAuth
       info do
         {
           'nickname' => raw_info['login'],
-          'email' => email,
           'name' => raw_info['name'],
         }
       end
@@ -30,16 +27,8 @@ module OmniAuth
 
       def raw_info
         access_token.options[:mode] = :query
-        @raw_info ||= access_token.get('/user').parsed
-      end
-
-      def email
-        raw_info['email'] || (email_access_allowed? ? emails.first : nil)
-      end
-
-      def emails
-        access_token.options[:mode] = :query
-        @emails ||= access_token.get('/user/emails').parsed
+        access_token.options[:param_name] = :oauth_token 
+        @raw_info ||= access_token.get('/oauth/user').parsed
       end
 
       def email_access_allowed?

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include Songkick::OAuth2::Model::ClientOwner
 
   attr_accessible :client_id, :password, :username
+  belongs_to :client
   #has_many :database_connections
 
 end

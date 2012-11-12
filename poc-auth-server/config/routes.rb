@@ -9,11 +9,14 @@ PocAuthServer::Application.routes.draw do
 
   #oauth urls
 
-  match "auth/authorize" => 'authentication#authorize'
+  match "oauth/authorize" => 'authentication#authorize'
   match "error" => "authentication#error"
   match "authorize" => "authentication#authorize"
-  match "oauth/allow" => "authentication#allow"
+  match "auth/allow" => "authentication#allow"
   get "auth/user" => "authentication#user"
+  get "oauth/token" => "authentication#user"
+  match "oauth/allow" => "authentication#allow"
+  get "oauth/user" => "authentication#user"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

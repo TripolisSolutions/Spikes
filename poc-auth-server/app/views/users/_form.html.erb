@@ -20,6 +20,10 @@
     <%= f.label :password %><br />
     <%= f.text_field :password %>
   </div>
+  <div class="field">
+    <%= f.label :client %><br />
+    <%= f.select :client_id, Client.all.map{|c| [c.name, c.id]} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

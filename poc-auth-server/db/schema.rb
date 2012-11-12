@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106092824) do
+ActiveRecord::Schema.define(:version => 20121107102149) do
 
   create_table "clients", :force => true do |t|
-    t.string   "label"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name"
+    t.string   "redirect_uri"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "oauth2_authorizations", :force => true do |t|
@@ -52,11 +53,12 @@ ActiveRecord::Schema.define(:version => 20121106092824) do
   add_index "oauth2_clients", ["name"], :name => "index_oauth2_clients_on_name", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "client"
+    t.integer  "client_id"
     t.string   "username"
     t.string   "password"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "remember_token"
   end
 
 end
