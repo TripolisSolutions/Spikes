@@ -1,0 +1,2 @@
+APPID = 'lwcz7sf425sf6tztcbr99ut6rb6sz4' #this is created by the auth server when creating a client
+AUTHKEY = '$2a$10$YJ/AKjbucOBuJGw8ljsyiOSxVl1mqEhU7k0722ZAa.jjwMTWNH4vm' #this is created by the auth server when creating a client
