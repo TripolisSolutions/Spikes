@@ -33,7 +33,7 @@ class AuthenticationController < ApplicationController
           }
       }
 
-      render :json => hash.to_json
+      render :json => hash
 
     else
       redirect_to :error
@@ -45,7 +45,7 @@ class AuthenticationController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @oauth2 = Songkick::OAuth2::Provider.parse(@user, env)
     if @oauth2.redirect?
-      redirect_to @oauth2.redirect_uri, @oauth2.response_status
+      return redirect_to @oauth2.redirect_uri, status: @oauth2.response_status
     end
 
     response.headers = @oauth2.response_headers

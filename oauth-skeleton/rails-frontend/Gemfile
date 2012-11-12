@@ -4,6 +4,11 @@ gem 'rails', '3.2.8'
 
 gem 'haml'
 
+gem 'simpleconfig'
+gem 'omniauth-tripolis'
+gem 'pg'
+gem 'haml'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
