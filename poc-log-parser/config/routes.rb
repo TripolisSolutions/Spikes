@@ -1,5 +1,6 @@
 PocLogParser::Application.routes.draw do
   get "log_parser/index"
+  root to: "log_parser#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
