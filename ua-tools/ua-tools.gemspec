@@ -1,8 +1,12 @@
+$:.push File.expand_path("../lib", __FILE__)
+
+require "ua-tools"
+
 Gem::Specification.new do |s|
   s.name         = "ua-tools"
-  s.version      = "0.1"
-  s.author       = "Harald Walker"
-  s.email        = "hwalker@tripolis.com"
+  s.version      = UaTools::VERSION
+  s.authors       = ["Harald Walker"]
+  s.email        =  ["hwalker@tripolis.com"]
   s.homepage     = "http://www.tripolis.com"
   s.summary      = "Utilities to parse user-agent strings."
   s.description  = File.read(File.join(File.dirname(__FILE__), 'README'))
@@ -13,4 +17,5 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>=1.9'
   s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rake'
 end
