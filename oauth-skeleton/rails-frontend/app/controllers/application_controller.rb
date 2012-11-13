@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #around_filter :set_token
+  around_filter :set_token
 
   protected
   def app_config
@@ -20,16 +20,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
+  def auth
+    env['omniauth.auth']
+  end
+
+  def uid
+    auth.try(:uid)
+  end
 
   def auth_token
-    credentials['auth_token']
+    auth.try(credentials).try(token)
   end
 
   def set_token
-    Thread.current[:auth_token] = auth_token
+    BackendModel.auth_token = session[:auth_token] || auth_token
     r = yield
-    Thread.current[:auth_token] = nil
+    BackendModel.auth_token = nil
     r
   end
 end

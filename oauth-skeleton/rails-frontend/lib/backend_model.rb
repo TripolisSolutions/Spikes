@@ -2,16 +2,30 @@ require_relative "backend_connection"
 
 class BackendModel < ActiveRessource::Base
   self.site = config.backend_site
-  self.auth_type = :oauth2
 
-  def connection(refresh = false)
-    @connection = BackendConnection.new if refresh || @connection.nil?
-    @connection.token = Thread.current[:auth_token]
+  class << self
+    def headers
+      super.merge(auth_headers)
+    end
 
-    super(false)
-  end
+    def auth_token=(token)
+      Thread.current[:auth_token] = token
+    end
 
-  def config
-    SimpleConfig.for(:backend)
+    def auth_token
+      Thread.current[:auth_token]
+    end
+
+    protected
+    def auth_headers
+      @auth_headers ||= {
+        {'Authentication' => 'Bearer #{auth_token}'}
+      }
+    end
+
+    def config
+      SimpleConfig.for(:backend)
+    end
+
   end
 end
