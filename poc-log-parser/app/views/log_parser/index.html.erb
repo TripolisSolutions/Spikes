@@ -1,0 +1,42 @@
+<h1>Parse result</h1>
+<table width="100%">
+  <tr>
+    <td width="50%">
+      <%= high_chart("os_chart", @os_chart) %>
+    </td>
+    <td width="50%">
+      <%= high_chart("device_chart", @device_chart) %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% @operating_systems.each do |key, value| %>
+          <%=  key %> = <%=  value %><br/>
+      <% end %>
+    </td>
+    <td>
+      <% @devices.each do |key, value| %>
+          <%=  key %> = <%=  value %><br/>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <h2>Countries</h2>
+      <div>
+        <% @countries.each do |key, value| %>
+            <%=  key %> = <%=  value %><br/>
+        <% end %>
+      </div>
+    </td>
+    <td valign="top">
+      <h2>Cities</h2>
+      <div>
+        <% @cities.each do |key, value| %>
+            <%=  key %> = <%=  value %><br/>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+</table>
+
