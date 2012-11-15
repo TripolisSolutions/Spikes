@@ -29,13 +29,13 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_token
-    auth.try(credentials).try(token)
+    auth.try(:credentials).try(:token)
   end
 
   def set_token
-    BackendModel.auth_token = session[:auth_token] || auth_token
+    BackendModel.user_id = session[:user_id] || uid
     r = yield
-    BackendModel.auth_token = nil
+    BackendModel.user_id = nil
     r
   end
 end

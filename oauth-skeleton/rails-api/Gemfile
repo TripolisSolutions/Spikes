@@ -4,9 +4,7 @@ gem 'rails', '3.2.8'
 
 gem 'pg'
 
-gem "devise", ">= 2.1.0"
-
-gem "omniauth-tripolis"
+gem "simpleconfig"
 
 group :test, :development do
   gem 'spork-rails'

@@ -1,31 +1,28 @@
-require_relative "backend_connection"
-
-class BackendModel < ActiveRessource::Base
-  self.site = config.backend_site
-
+class BackendModel < ActiveResource::Base
   class << self
     def headers
       super.merge(auth_headers)
     end
 
-    def auth_token=(token)
-      Thread.current[:auth_token] = token
+    def user_id=(uid)
+      Thread.current[:user_id] = uid
     end
 
-    def auth_token
-      Thread.current[:auth_token]
+    def user_id
+      Thread.current[:user_id]
     end
 
     protected
     def auth_headers
       @auth_headers ||= {
-        {'Authentication' => 'Bearer #{auth_token}'}
+        'X-User' => user_id
       }
     end
 
     def config
       SimpleConfig.for(:backend)
     end
-
   end
+
+  self.site = config.backend_server
 end
