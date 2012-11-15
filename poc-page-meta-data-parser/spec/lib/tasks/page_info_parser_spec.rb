@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'webmock/rspec'
 
-describe Page_info_parser do
+describe PageInfoParser do
 
   before :each do
     stub_request(:get, /.*example.*/).to_return do |request|
@@ -16,7 +16,7 @@ describe Page_info_parser do
 
     before :each do
       @test_url = "#{Rails.root}/spec/fixtures/good_page.html"
-      @page_info = Page_info_parser.new(@test_url).page_info
+      @page_info = PageInfoParser.new(@test_url).page_info
     end
 
     subject{ @page_info }
@@ -38,7 +38,7 @@ describe Page_info_parser do
 
     before do
       @test_url = "#{Rails.root}/spec/fixtures/og_page.html"
-      @page_info = Page_info_parser.new(@test_url).page_info
+      @page_info = PageInfoParser.new(@test_url).page_info
     end
 
     subject{ @page_info }

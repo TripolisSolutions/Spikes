@@ -1,4 +1,10 @@
 PocPageMetaDataParser::Application.routes.draw do
+
+  get "home_page/index"
+  root to: 'home_page#index'
+
+  resources :page_infos, only: [:create]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

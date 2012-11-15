@@ -1,0 +1,3 @@
+$("#page_info_title").val("<%= @page_info.title %>")
+$("#page_info_description").html("<%= @page_info.description %>")
+$("#gallery").html("<%= escape_javascript(render :partial => 'gallery') %>")

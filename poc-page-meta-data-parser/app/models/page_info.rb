@@ -1,6 +1,8 @@
-class Page_info
+class PageInfo
 
-  PROPERTIES = [:title, :description, :images]
+  include ActiveModel::Validations
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
 
   attr_reader :url, :title, :description, :images
   attr_writer :title, :description, :images
@@ -8,6 +10,10 @@ class Page_info
   def initialize(url)
     @url = url
     @images = Array.new
+  end
+
+  def persisted?
+    false
   end
 
 end
