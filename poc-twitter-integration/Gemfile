@@ -4,6 +4,7 @@ gem 'rails', '3.2.8'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '2.0.4'
 gem 'dalli'
+gem 'headless'
 
 
 # Bundle edge Rails instead:
