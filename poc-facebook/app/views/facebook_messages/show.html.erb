@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<h2><%= @facebook_message['story'] %></h2>
+<p>
+  <img src="<%= @facebook_message['picture'] %>" /><br/>
+  <%= @facebook_message['description'] %></p>
+<p><a href="<%= @facebook_message['link'] %>" target="_blank">Lees meer</a></p>
+<%= link_to 'Back', facebook_messages_path %>

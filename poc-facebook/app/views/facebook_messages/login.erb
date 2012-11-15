@@ -1,0 +1,2 @@
+<h1>Login with facebook!</h1>
+<%= link_to 'Login', Koala::Facebook::OAuth.new.url_for_oauth_code({:callback => @oauth_callback_url,:permissions => ["publish_stream","manage_pages"]}) %>

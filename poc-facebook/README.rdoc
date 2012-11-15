@@ -1,0 +1,25 @@
+== Facebook POC
+
+Welcome to the facebook Poc
+
+
+== How it works
+
+When you have started up the application you get redirected to the login page which says 'login on facebook'
+When clicking this link the oauth dance starts.
+
+The login page is login.erb
+
+In erb the link is defined as follows:
+<%= link_to 'Login', Koala::Facebook::OAuth.new.url_for_oauth_code({:callback => @oauth_callback_url,:permissions => ["publish_stream","manage_pages"]}) %>
+
+In the actual html this is the result:
+https://graph.facebook.com/oauth/authorize?client_id=307800659331200&redirect_uri=http%3A%2F%2Flocalhost.com%3A3000%2Foauth%2F&scope=publish_stream%2Cmanage_pages
+
+It has a client id which identifies the application. The redirect_uri is the url facebook will redirect to after the ouath dance and consent
+has been done.
+
+Then we also have a scope parameter which is a comma seperated list. This is quiet important if your application has extended persmissions.
+Only defining extended persmissions on application sign up at Facebook isn't enough. You also have to apply these when starting the oauth dance.
+
+After redirect you can see the facebook info in the application. Take a look inthe facebook_messages_controller to see how it works.
