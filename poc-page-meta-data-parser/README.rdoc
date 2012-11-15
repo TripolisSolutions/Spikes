@@ -1,0 +1,3 @@
+== POC: Page meta data parser
+
+POC #1013 to duplicate the fetching of page meta-data when sharing a link on Facebook.
