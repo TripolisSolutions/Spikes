@@ -1,3 +1,13 @@
-<% @page_info.images.each do |image| %>
-<img src="<%= image.url %>" />
-<% end %>
+<div class="carousel-nav">
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+<div id="myCarousel" class="carousel slide">
+  <div class="carousel-inner">
+    <% @page_info.images.each_with_index do |image, index| %>
+        <div class="<%= "active" if index == 0 %> item">
+          <img src="<%= image.url %>" style="width: 150px;" />
+        </div>
+    <% end %>
+    </div>
+</div>

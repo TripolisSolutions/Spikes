@@ -5,9 +5,10 @@ class PageInfoParser
   attr_reader :page_info
 
   def initialize(url)
-      @doc = open(url) { |f| Hpricot(f) }
+      @url = url
+      @doc = open(@url) { |f| Hpricot(f) }
       unless @doc.nil?
-        @page_info = PageInfo.new(url)
+        @page_info = PageInfo.new(@url)
         @page_info.images = Array.new
         fetch_title
         fetch_description
@@ -48,7 +49,8 @@ class PageInfoParser
     else
       image_tags = @doc.search("/html/body//img")
       image_tags.each do |image_tag|
-        image = Image.new(image_tag.attributes['src'])
+        image_url = fix_relative_paths(image_tag.attributes['src'])
+        image = Image.new(image_url)
         image.width = image_tag.attributes['width'].to_s.to_i if image_tag.attributes['width']
         image.height = image_tag.attributes['height'].to_s.to_i if image_tag.attributes['height']
         validate_and_add_image(image)
@@ -57,15 +59,31 @@ class PageInfoParser
     return images
   end
 
+  def fix_relative_paths(image_url)
+    if image_url.start_with?"http"
+      image_url
+    else
+      URI.join(@url, image_url).to_s
+    end
+  end
+
   def validate_and_add_image(image)
     if image.width == 0 || image.height == 0
-        image.width, image.height =  get_image_dimension(image.url)
+        image.width, image.height =  FastImage.size(image.url)
     end
-    @page_info.images.push(image) if image.width > 49 || image.height > 49
+    @page_info.images.push(image) if min_size?(image) && max_ratio?(image)
+  end
+
+  def min_size?(image)
+    image.width > 49 || image.height > 49
+  end
+
+  def max_ratio?(image)
+    image.width.to_f / image.height <= 3
   end
 
   def get_image_dimension(url)
-    FastImage.size(url)
+
   end
 
 end

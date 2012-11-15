@@ -1,11 +1,22 @@
 @import "bootstrap";
 
-#linkparser {
+body {
   padding: 50px;
+}
+
+#linkparser {
   width: 80%;
 }
 
 #gallery {
-  padding: 50px;
-  width: 80%;
+  width: 150px;
+}
+
+.carousel-nav {
+  width: 150px;
+  position: absolute;
+}
+
+.carousel {
+  padding-top: 30px;
 }
