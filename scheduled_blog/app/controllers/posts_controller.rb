@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'rufus/scheduler'
+
 class PostsController < ApplicationController
 
   http_basic_authenticate_with :name => "jeroen", :password => "jeroen", :except => [:index, :show]
@@ -5,7 +8,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    #@posts = Post.all
+    @posts = Post.getVisible
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,11 +48,28 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    scheduler = Rufus::Scheduler.start_new
+
+    success = @post.save
+
+    embargo = temp_post.publish_at.strftime("%a %b %d %H:%M:%S") + " +0100 " + temp_post.publish_at.strftime("%Y")
+
+    if success
+      testJob = scheduler.at embargo do
+        puts "Setting visible to true..."
+        @post.visible = true
+        @post.save
+      end
+    end
+
+
 
     respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
+      if success
+
+          format.html { redirect_to @post, notice: 'Post was successfully created.' }
+          format.json { render json: @post, status: :created, location: @post }
+
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -58,11 +79,31 @@ class PostsController < ApplicationController
 
   # PUT /posts/1
   # PUT /posts/1.json
+
+
+
   def update
     @post = Post.find(params[:id])
+    scheduler = Rufus::Scheduler.start_new
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
+    temp_post = Post.new(params[:post])
+    embargo = temp_post.publish_at.strftime("%a %b %d %H:%M:%S") + " +0100 " + temp_post.publish_at.strftime("%Y")
+
+    puts "requested post date: "+ embargo
+
+    success =  @post.update_attributes(params[:post])
+
+    if success
+      testJob = scheduler.at embargo do
+        puts "Setting visible to true..."
+        @post = Post.find(params[:id])
+        @post.visible = true
+        @post.save
+      end
+    end
+
+   respond_to do |format|
+      if success
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else

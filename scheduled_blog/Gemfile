@@ -24,3 +24,4 @@ gem 'jquery-rails'
 
 #gem 'whenever', require: false
 gem 'rufus-scheduler'
+gem 'simple_form'

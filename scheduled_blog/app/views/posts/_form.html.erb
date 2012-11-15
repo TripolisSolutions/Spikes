@@ -1,6 +1,7 @@
 <% @post.tags.build %>
-<%= form_for(@post) do |post_form| %>
-  <% if @post.errors.any? %>
+<%= simple_form_for(@post) do |post_form| %>
+
+   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
@@ -12,24 +13,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= post_form.label :name %><br />
-    <%= post_form.text_field :name %>
-  </div>
-  <div class="field">
-    <%= post_form.label :title %><br />
-    <%= post_form.text_field :title %>
-  </div>
-  <div class="field">
-    <%= post_form.label :content %><br />
-    <%= post_form.text_area :content %>
-  </div>
+    <%= post_form.input :name %>
+    <%= post_form.input :title %>
+    <%= post_form.input :content %>
+    <%= post_form.input :visible %>
+    <%= post_form.input :publish_at, :hint => 'choose when to publish the post' %>
+
+
+
 
   <h2>Tags</h2>
     <%= render :partial => 'tags/form',
                :locals => {:form => post_form} %>
 
-  <div class="actions">
-    <%= post_form.submit %>
-  </div>
+
+    <%= post_form.button :submit %>
 <% end %>

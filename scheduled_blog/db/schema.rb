@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121024133911) do
+ActiveRecord::Schema.define(:version => 20121114100348) do
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20121024133911) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "publish_at"
+    t.boolean  "visible"
   end
 
   create_table "tags", :force => true do |t|
