@@ -45,6 +45,7 @@ module UaTools
           when /(android).*(mobile safari)/i                    ; return :android, :mobile
           when /(android).*(safari)/i                           ; return :android, :tablet #after mobile android
           when /googletv/i                                      ; return :android, :tv
+          when /bot/i                                           ; return :unknown, :bot
           else                                                  ; return :unknown, :unknown
         end
       end

@@ -1,0 +1,3 @@
+== POC - Log parser
+
+Rails web-application to parse apache log files with the ua-tools gem and present the results in a web page.

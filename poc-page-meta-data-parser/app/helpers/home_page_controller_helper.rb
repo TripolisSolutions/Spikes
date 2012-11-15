@@ -1,0 +1,2 @@
+module HomePageControllerHelper
+end

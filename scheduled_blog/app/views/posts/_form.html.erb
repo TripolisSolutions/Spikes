@@ -1,0 +1,31 @@
+<% @post.tags.build %>
+<%= simple_form_for(@post) do |post_form| %>
+
+   <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= post_form.input :name %>
+    <%= post_form.input :title %>
+    <%= post_form.input :content %>
+    <%= post_form.input :visible %>
+    <%= post_form.input :publish_at, :hint => 'choose when to publish the post' %>
+
+
+
+
+  <h2>Tags</h2>
+    <%= render :partial => 'tags/form',
+               :locals => {:form => post_form} %>
+
+
+    <%= post_form.button :submit %>
+<% end %>

@@ -1,0 +1,8 @@
+== POC: Page meta data parser
+
+POC #1013 to duplicate the fetching of page meta-data when sharing a link on Facebook.
+
+== TODO
+* handle relative image paths
+* error handling (broken links, invalid html)
+* fetch description from content

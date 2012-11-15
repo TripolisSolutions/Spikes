@@ -78,17 +78,12 @@ module UaTools
              ],
              { platform: :macosx, device: :desktop })
       end
-
-
-
     end
 
     # helper method to perform the tests for user-agent strings
     def test(user_agent_strings, expect = { })
       user_agent_strings.each do |user_agent_string|
         user_agent = UserAgent.new(user_agent_string)
-        puts user_agent.os
-        puts user_agent.os.device
         user_agent.os.platform.should == expect[:platform]
         case expect[:device]
           when :mobile

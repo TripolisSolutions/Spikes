@@ -1,0 +1,16 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+nl:
+  hello: "Hallo Wereld"
+
+  posts:
+    index:
+      title: "Lijst van posts"
+
+  activerecord:
+    attributes:
+      post:
+        title: "Titel"
+        name: "Naam"
+        content: "Inhoud"

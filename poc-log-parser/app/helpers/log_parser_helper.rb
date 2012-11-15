@@ -1,0 +1,2 @@
+module LogParserHelper
+end
