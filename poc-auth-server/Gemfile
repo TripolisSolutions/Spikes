@@ -40,3 +40,5 @@ gem "pg"
 gem "songkick-oauth2-provider"
 gem "activerecord-postgresql-adapter"
 gem "oauth2"
+gem 'unicorn'
+gem 'dalli'

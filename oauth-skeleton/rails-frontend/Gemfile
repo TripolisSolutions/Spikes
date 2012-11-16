@@ -8,6 +8,7 @@ gem 'simpleconfig'
 gem 'omniauth-tripolis'
 gem 'pg'
 gem 'haml'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -6,6 +6,8 @@ gem 'pg'
 
 gem "simpleconfig"
 
+gem 'thin'
+
 group :test, :development do
   gem 'spork-rails'
   gem "rspec-rails", "~> 2.0"

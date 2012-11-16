@@ -52,7 +52,7 @@ production:
   adapter: postgresql
   host: 127.0.0.1
   encoding: unicode
-  database: rails-api_production
+  database: rails-api_development
   pool: 5
   username: rails-api
   password: P@ssw0rd

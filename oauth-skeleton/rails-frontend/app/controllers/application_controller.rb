@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  around_filter :set_token
+  around_filter :set_user_id
 
   protected
   def app_config
@@ -28,11 +28,7 @@ class ApplicationController < ActionController::Base
     auth.try(:uid)
   end
 
-  def auth_token
-    auth.try(:credentials).try(:token)
-  end
-
-  def set_token
+  def set_user_id
     BackendModel.user_id = session[:user_id] || uid
     r = yield
     BackendModel.user_id = nil
