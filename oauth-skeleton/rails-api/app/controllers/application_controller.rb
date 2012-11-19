@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def populate_user
-    uid =  request.headers['X-User'].to_i
-    return render text: "Access denied", status: :unauthorized unless uid
-    @user_id = uid.to_i
+    uid =  request.headers['X-User']
+    #return render text: "Access denied", status: :unauthorized unless uid
+    @user_id = uid.try(:to_i)
   end
 
   def user_info
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_user_info(user_id)
-    User.find(user_id)
+    User.find(user_id) if user_id
   end
 
   def app_config

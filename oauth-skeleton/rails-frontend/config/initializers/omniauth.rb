@@ -1,7 +1,7 @@
 
-c = SimpleConfig.for :auth
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :tripolis, c.app_id, c.app_secret, scope: 'users'
+  c = SimpleConfig.for :auth
+  provider :tripolis, c.app_id, c.app_secret, scope: 'users', client_options: {site: c.auth_server}
   on_failure do |env|
     message_key = env['omniauth.error.type']
     origin = (env['omniauth.origin'] || '').split('?').last

@@ -18,10 +18,11 @@ class ApiController < ActionController::Metal
   include ActionController::Instrumentation
 
   #need this for wrap_parameters
-  #include ActionController::ParamsWrapper
+  include ActionController::ParamsWrapper
 
   include ActionController::Caching
 
+  before_filter :populate_user
   
   protected
 
