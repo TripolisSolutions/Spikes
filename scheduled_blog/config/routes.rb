@@ -1,9 +1,15 @@
 Blog::Application.routes.draw do
+
+
+  match 'posts/unschedule/:id' => "posts#unschedule"
+
   resources :posts do
     resources :comments
    end
 
   get "home/index"
+  #get "posts/unschedule"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

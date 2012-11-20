@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'rufus/scheduler'
 
 class PostsController < ApplicationController
 
@@ -9,7 +8,25 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     #@posts = Post.all
-    @posts = Post.getVisible
+    @posts = Post.getVisible('t')
+    all_invisible_posts = Post.getVisible('f')
+    @scheduled_posts = []
+
+    @invisible_posts = []
+
+    all_invisible_posts.each do |inv_post|
+         job = @@scheduler.find_by_tag(inv_post.id.to_s)
+         puts "job class: "+job[0].class.to_s
+
+          if !job[0].nil?
+            puts "scheduled job: "+job[0].inspect
+            inv_post.scheduled_job = job[0]
+            @scheduled_posts <<  inv_post
+          else
+            @invisible_posts <<  inv_post
+          end
+
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,18 +61,32 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def unschedule
+
+    id= params[:id]
+    job = @@scheduler.find_by_tag(id.to_s)
+
+    if !job[0].nil?
+      job[0].unschedule
+    end
+
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.json { head :no_content }
+    end
+  end
+
   # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
-    scheduler = Rufus::Scheduler.start_new
 
     success = @post.save
 
-    embargo = temp_post.publish_at.strftime("%a %b %d %H:%M:%S") + " +0100 " + temp_post.publish_at.strftime("%Y")
+    embargo = @post.publish_at.strftime("%a %b %d %H:%M:%S") + " +0100 " + @post.publish_at.strftime("%Y")
 
     if success
-      testJob = scheduler.at embargo do
+      testJob = @@scheduler.at embargo, :tags => @post.id.to_s do
         puts "Setting visible to true..."
         @post.visible = true
         @post.save
@@ -84,7 +115,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    scheduler = Rufus::Scheduler.start_new
 
     temp_post = Post.new(params[:post])
     embargo = temp_post.publish_at.strftime("%a %b %d %H:%M:%S") + " +0100 " + temp_post.publish_at.strftime("%Y")
@@ -94,7 +124,7 @@ class PostsController < ApplicationController
     success =  @post.update_attributes(params[:post])
 
     if success
-      testJob = scheduler.at embargo do
+      testJob = @@scheduler.at embargo, :tags => @post.id.to_s do
         puts "Setting visible to true..."
         @post = Post.find(params[:id])
         @post.visible = true
@@ -124,4 +154,8 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+
 end
