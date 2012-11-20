@@ -1,1 +1,13 @@
 == 1009 Backend Scheduler Jobs POC
+
+Used a simple Blog app created with scaffolding. If you create or edit a post, you can select a time when you want the post to become visible to the world.
+
+how to use:
+create or update a post and set it to visible false.
+Add some text, select a time, for instance 2 minutes from now and continue.
+The post is now saved with property visible false. Also a scheduler has been created that will update the post and set visibility to true at the given time.
+You now go to the detail page or the post. Click back to go back to the list.
+
+Now you see the post under "Invisible and scheduled". Once the scheduled time had passed, the post will show up in the normal posts list.
+
+Scheduled posts can also be unscheduled by clicking the 'unschedule' link.
