@@ -8,4 +8,10 @@ class Place < ActiveRecord::Base
 
   default_scope order: 'places.name ASC'
 
+  def attributes_from_location(location)
+    name = location.attrs[:name]
+    country=location.attrs[:country]
+    place_type=location.attrs[:placeType][:name]
+  end
+
 end

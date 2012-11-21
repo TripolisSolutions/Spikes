@@ -1,5 +1,5 @@
 <div>
-<form>
+  <%= form_for(@place) do |f| %>
   <fieldset>
     <legend>Trending locations</legend>
     <div class="input-append">
@@ -8,8 +8,8 @@
       <option value="<%= location.woeid %>"><%=  location.name %></option>
     <% end %>
     </select>
-    <button type="submit" class="btn btn-primary">Monitor</button>
-        </div>
+    <%= f.submit "Monitor", class: "btn btn-primary" %>
+    </div>
   </fieldset>
-</form>
+  <% end %>
 </div>

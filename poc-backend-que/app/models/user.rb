@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :avatarUrl, :description, :location, :name, :realName, :uid
 
-  has_many :tweets, dependent: :destroy
+  has_many :places, dependent: :destroy
 
   def self.from_omniauth(auth)
     user = find_by_uid(auth["uid"]) || create_from_omniauth(auth)
