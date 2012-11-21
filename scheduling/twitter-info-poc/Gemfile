@@ -32,3 +32,13 @@ end
 
 gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
+
+gem "twitter"
+gem 'omniauth-twitter'
+
+gem "strong_parameters"
+
+gem "resque"
+gem 'resque-scheduler', require: 'resque_scheduler'
+
+gem "simple_config"

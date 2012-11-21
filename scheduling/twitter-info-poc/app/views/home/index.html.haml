@@ -1,0 +1,6 @@
+- if logged_in?
+  %h2 Your watches
+- else
+  %p
+    = link_to "Login using Twitter", "/auth/twitter"
+  %p

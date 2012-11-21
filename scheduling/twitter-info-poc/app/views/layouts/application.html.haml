@@ -25,25 +25,18 @@
           %a.brand(href="#") TwitterInfoPoc
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              - if logged_in?
+                %li= link_to "Sign out", delete_session_path, method: :delete
 
     .container
 
       .content
         .row
           .span9
+            = flash_block
             = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
-    
+          - if logged_in?
+            = render partial: "/layouts/partials/sidebar"
       %footer
         %p &copy; Company 2012
     /

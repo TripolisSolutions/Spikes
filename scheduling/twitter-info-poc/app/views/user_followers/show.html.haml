@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @user_follower.user_id
+%p
+  %b Screen name:
+  = @user_follower.screen_name
+%p
+  %b Last loaded:
+  = @user_follower.last_loaded
+%p
+  %b Status:
+  = @user_follower.status
+%p
+  %b Last updated:
+  = @user_follower.last_updated
+
+= link_to 'Edit', edit_user_follower_path(@user_follower)
+\|
+= link_to 'Back', user_followers_path

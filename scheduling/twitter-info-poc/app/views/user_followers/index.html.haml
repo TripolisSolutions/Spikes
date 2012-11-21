@@ -1,0 +1,27 @@
+%h1 Listing user_followers
+
+%table
+  %tr
+    %th User
+    %th Screen name
+    %th Last loaded
+    %th Status
+    %th Last updated
+    %th
+    %th
+    %th
+
+  - @user_followers.each do |user_follower|
+    %tr
+      %td= user_follower.user_id
+      %td= user_follower.screen_name
+      %td= user_follower.last_loaded
+      %td= user_follower.status
+      %td= user_follower.last_updated
+      %td= link_to 'Show', user_follower
+      %td= link_to 'Edit', edit_user_follower_path(user_follower)
+      %td= link_to 'Destroy', user_follower, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New User follower', new_user_follower_path
