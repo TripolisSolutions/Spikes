@@ -1,2 +1,3 @@
 module HomePageHelper
+
 end

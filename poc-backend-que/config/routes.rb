@@ -1,5 +1,11 @@
 PocBackendQue::Application.routes.draw do
 
+  get "place/index"
+
+  get "place/create"
+
+  get "place/delete"
+
   root to: 'home_page#index'
 
   resources :sessions, only: [:create, :destroy]

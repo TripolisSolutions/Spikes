@@ -2,6 +2,7 @@
 <% if signed_in? %>
     <div class="span4">
         <%= render :partial => 'user_profile' %>
+        <%= render :partial => 'trendlocations' %>
     </div>
     <div class="span5">
       <div id="flash" style="display: none;"><!-- insert messages here --></div>

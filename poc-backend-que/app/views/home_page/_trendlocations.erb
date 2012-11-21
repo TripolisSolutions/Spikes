@@ -1,0 +1,15 @@
+<div>
+<form>
+  <fieldset>
+    <legend>Trending locations</legend>
+    <div class="input-append">
+    <select id="location" name="location">
+    <% @trend_locations.each do |location| %>
+      <option value="<%= location.woeid %>"><%=  location.name %></option>
+    <% end %>
+    </select>
+    <button type="submit" class="btn btn-primary">Monitor</button>
+        </div>
+  </fieldset>
+</form>
+</div>
