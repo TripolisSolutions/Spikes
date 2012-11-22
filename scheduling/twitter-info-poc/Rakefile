@@ -5,10 +5,11 @@
 require File.expand_path('../config/application', __FILE__)
 
 TwitterInfoPoc::Application.load_tasks
+require 'resque/tasks'
 require 'resque_scheduler/tasks'
 
 namespace :resque do
-  task :setup do
+  task setup: :environment  do
     require 'resque'
     require 'resque_scheduler'
     require 'resque/scheduler'
@@ -25,11 +26,8 @@ namespace :resque do
     # be a hash.  YAML is usually the easiest.
     Resque.schedule = YAML.load_file(File.join(Rails.root, 'config/scheduler.yml'))
 
-    # If your schedule already has +queue+ set for each job, you don't
-    # need to require your jobs.  This can be an advantage since it's
-    # less code that resque-scheduler needs to know about. But in a small
-    # project, it's usually easier to just include you job classes here.
-    # So, someting like this:
-    #require 'jobs'
+    # Force load all models
+    ActiveRecord::Base.descendants.each { |klass|  klass.columns }
   end
+  task workers: "resque:setup"
 end

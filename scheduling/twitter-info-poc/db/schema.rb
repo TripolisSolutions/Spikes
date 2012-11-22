@@ -11,17 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121101437) do
+ActiveRecord::Schema.define(:version => 20121122074937) do
+
+  create_table "api_timeouts", :force => true do |t|
+    t.string   "api"
+    t.datetime "reset_time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "contacts", :force => true do |t|
+    t.integer  "uid",         :limit => 8
     t.string   "name"
     t.string   "location"
     t.string   "avator_url"
     t.string   "real_name"
     t.string   "description"
     t.datetime "last_update"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "user_followers", :force => true do |t|
@@ -32,6 +40,11 @@ ActiveRecord::Schema.define(:version => 20121121101437) do
     t.datetime "last_updated"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "user_followers_contacts", :force => true do |t|
+    t.integer "user_follower_id"
+    t.integer "contact_id"
   end
 
   create_table "users", :force => true do |t|

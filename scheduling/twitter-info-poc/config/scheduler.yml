@@ -1,6 +1,4 @@
 UpdateFollowersTask:
-  cron: "*/5 * * * *"
-  queue: twitter
-LoadContactsTask:
   cron: "* * * * *"
-  queue: twitter
+RefreshContactsTask:
+  cron: "* * * * *"
