@@ -5,12 +5,7 @@ class LoadContactsTask < ApiLimitTask
     users = client.users(uids)
     users.each do |u|
       contact = Contact.where(uid: u.attrs[:id]).first
-      contact.name = u.attrs[:screen_name]
-      contact.location = u.attrs[:location]
-      contact.avator_url = u.attrs[:profile_image_url]
-      contact.real_name = u.attrs[:name]
-      contact.description = u.attrs[:description]
-      contact.last_update = Time.now
+      contact.from_twitter(u.attrs)
       contact.save
     end
   end

@@ -42,3 +42,5 @@ gem "resque"
 gem 'resque-scheduler', require: 'resque_scheduler'
 
 gem "simpleconfig"
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

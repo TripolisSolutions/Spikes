@@ -1,0 +1,13 @@
+%table.table
+  %tr
+    %th
+    %th Screen name
+    %th Followers
+  - @followers.each do |f|
+    %tr
+      %td
+        %img{src: f.contact.avator_url}
+      %td= f.contact.name
+      %td= f.contact.followers_count
+
+%p= will_paginate(@followers, renderer: WillPaginate::ActionView::BootstrapLinkRenderer)

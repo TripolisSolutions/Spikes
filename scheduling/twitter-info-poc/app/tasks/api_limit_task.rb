@@ -21,7 +21,7 @@ class ApiLimitTask
       api = ApiTimeout.where(api: api).first_or_initialize
       api.reset_time = e.rate_limit.reset_at
       api.save
-      Resque.enqueue_at(e.rate_limit.reset_at, self.class, *params)
+      Resque.enqueue_at(e.rate_limit.reset_at, self, *params)
     end
 
     protected

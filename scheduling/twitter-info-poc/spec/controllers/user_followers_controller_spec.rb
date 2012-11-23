@@ -34,131 +34,64 @@ describe UserFollowersController do
     {}
   end
 
-  describe "GET index" do
-    it "assigns all user_followers as @user_followers" do
-      user_follower = UserFollower.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:user_followers).should eq([user_follower])
-    end
-  end
 
-  describe "GET show" do
-    it "assigns the requested user_follower as @user_follower" do
-      user_follower = UserFollower.create! valid_attributes
-      get :show, {:id => user_follower.to_param}, valid_session
-      assigns(:user_follower).should eq(user_follower)
+  context "user logged in" do
+    before do
+      @controller.stub(:logged_in?).and_return(true)
+      @controller.stub(:current_user_id).and_return(1)
     end
-  end
 
-  describe "GET new" do
-    it "assigns a new user_follower as @user_follower" do
-      get :new, {}, valid_session
-      assigns(:user_follower).should be_a_new(UserFollower)
-    end
-  end
+    describe "POST create" do
+      describe "with valid params" do
+        it "creates a new UserFollower" do
+          expect {
+            post :create, {:user_follower => valid_attributes}, valid_session
+          }.to change(UserFollower, :count).by(1)
+        end
 
-  describe "GET edit" do
-    it "assigns the requested user_follower as @user_follower" do
-      user_follower = UserFollower.create! valid_attributes
-      get :edit, {:id => user_follower.to_param}, valid_session
-      assigns(:user_follower).should eq(user_follower)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new UserFollower" do
-        expect {
+        it "assigns a newly created user_follower as @user_follower" do
           post :create, {:user_follower => valid_attributes}, valid_session
-        }.to change(UserFollower, :count).by(1)
+          assigns(:user_follower).should be_a(UserFollower)
+          assigns(:user_follower).should be_persisted
+        end
+
+        it "redirects to the created user_follower" do
+          post :create, {:user_follower => valid_attributes}, valid_session
+          response.should redirect_to(root_path)
+        end
       end
 
-      it "assigns a newly created user_follower as @user_follower" do
-        post :create, {:user_follower => valid_attributes}, valid_session
-        assigns(:user_follower).should be_a(UserFollower)
-        assigns(:user_follower).should be_persisted
-      end
+      describe "with invalid params" do
+        it "assigns a newly created but unsaved user_follower as @user_follower" do
+          # Trigger the behavior that occurs when invalid params are submitted
+          UserFollower.any_instance.stub(:save).and_return(false)
+          post :create, {:user_follower => { "user_id" => "invalid value" }}, valid_session
+          assigns(:user_follower).should be_a_new(UserFollower)
+        end
 
-      it "redirects to the created user_follower" do
-        post :create, {:user_follower => valid_attributes}, valid_session
-        response.should redirect_to(UserFollower.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved user_follower as @user_follower" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        UserFollower.any_instance.stub(:save).and_return(false)
-        post :create, {:user_follower => { "user_id" => "invalid value" }}, valid_session
-        assigns(:user_follower).should be_a_new(UserFollower)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        UserFollower.any_instance.stub(:save).and_return(false)
-        post :create, {:user_follower => { "user_id" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested user_follower" do
-        user_follower = UserFollower.create! valid_attributes
-        # Assuming there are no other user_followers in the database, this
-        # specifies that the UserFollower created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        UserFollower.any_instance.should_receive(:update_attributes).with({ "user_id" => "1" })
-        put :update, {:id => user_follower.to_param, :user_follower => { "user_id" => "1" }}, valid_session
-      end
-
-      it "assigns the requested user_follower as @user_follower" do
-        user_follower = UserFollower.create! valid_attributes
-        put :update, {:id => user_follower.to_param, :user_follower => valid_attributes}, valid_session
-        assigns(:user_follower).should eq(user_follower)
-      end
-
-      it "redirects to the user_follower" do
-        user_follower = UserFollower.create! valid_attributes
-        put :update, {:id => user_follower.to_param, :user_follower => valid_attributes}, valid_session
-        response.should redirect_to(user_follower)
+        it "re-renders the 'new' template" do
+          # Trigger the behavior that occurs when invalid params are submitted
+          UserFollower.any_instance.stub(:save).and_return(false)
+          post :create, {:user_follower => { "user_id" => "invalid value" }}, valid_session
+          response.should render_template("new")
+        end
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the user_follower as @user_follower" do
+
+    describe "DELETE destroy" do
+      it "destroys the requested user_follower" do
         user_follower = UserFollower.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        UserFollower.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user_follower.to_param, :user_follower => { "user_id" => "invalid value" }}, valid_session
-        assigns(:user_follower).should eq(user_follower)
+        expect {
+          delete :destroy, {:id => user_follower.to_param}, valid_session
+        }.to change(UserFollower, :count).by(-1)
       end
 
-      it "re-renders the 'edit' template" do
+      it "redirects to the user_followers list" do
         user_follower = UserFollower.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        UserFollower.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user_follower.to_param, :user_follower => { "user_id" => "invalid value" }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested user_follower" do
-      user_follower = UserFollower.create! valid_attributes
-      expect {
         delete :destroy, {:id => user_follower.to_param}, valid_session
-      }.to change(UserFollower, :count).by(-1)
-    end
-
-    it "redirects to the user_followers list" do
-      user_follower = UserFollower.create! valid_attributes
-      delete :destroy, {:id => user_follower.to_param}, valid_session
-      response.should redirect_to(user_followers_url)
+        response.should redirect_to(root_url)
+      end
     end
   end
-
 end

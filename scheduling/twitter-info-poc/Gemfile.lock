@@ -29,6 +29,8 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
+    bootstrap-will_paginate (0.0.7)
+      will_paginate
     builder (3.0.4)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -192,11 +194,13 @@ GEM
     vegas (0.1.11)
       rack (>= 1.0.0)
     watchr (0.7)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-will_paginate
   coffee-rails (~> 3.2.1)
   factory_girl_rails
   haml-rails
@@ -219,3 +223,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   watchr
+  will_paginate

@@ -1,5 +1,7 @@
 TwitterInfoPoc::Application.routes.draw do
-  resources :user_followers
+  resources :user_followers do
+    get :followers, on: :member
+  end
 
   root to: "home#index"
 

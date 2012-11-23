@@ -1,5 +1,5 @@
 - if logged_in?
-  %h2 Your watches
+  = render partial: "/user_followers/dashboard"
 - else
   %p
     = link_to "Login using Twitter", "/auth/twitter"

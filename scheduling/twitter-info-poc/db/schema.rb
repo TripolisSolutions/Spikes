@@ -21,31 +21,34 @@ ActiveRecord::Schema.define(:version => 20121122074937) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.integer  "uid",         :limit => 8
+    t.integer  "uid",             :limit => 8
+    t.integer  "followers_count"
     t.string   "name"
     t.string   "location"
     t.string   "avator_url"
     t.string   "real_name"
     t.string   "description"
     t.datetime "last_update"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "user_followers", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "twitter_id",   :limit => 8
+    t.integer  "twitter_id",  :limit => 8
     t.integer  "last_loaded"
     t.string   "status"
-    t.datetime "last_updated"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "user_followers_contacts", :force => true do |t|
     t.integer "user_follower_id"
     t.integer "contact_id"
   end
+
+  add_index "user_followers_contacts", ["contact_id"], :name => "index_user_followers_contacts_on_contact_id"
+  add_index "user_followers_contacts", ["user_follower_id"], :name => "index_user_followers_contacts_on_user_follower_id"
 
   create_table "users", :force => true do |t|
     t.integer  "uid",          :limit => 8

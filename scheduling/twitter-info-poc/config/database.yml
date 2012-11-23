@@ -42,7 +42,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: twit_dev
+  database: twit_test
   pool: 5
   username: twit
   password: Password

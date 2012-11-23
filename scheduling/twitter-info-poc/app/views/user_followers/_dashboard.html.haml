@@ -1,0 +1,23 @@
+%h2 Your watches
+%table.table
+  %tr
+    %th Screen name
+    %th Followers
+    %th Loaded
+    %th Actions
+  - current_user.user_followers.each do |f|
+    %tr
+      %td= f.contact.name || "Unknown"
+      %td= f.contact.followers_count || '?'
+      %td= f.contacts.count
+      %td
+        = link_to "Unwatch", user_follower_path(f), method: :delete
+        |
+        = link_to "List followers", followers_user_follower_path(f)
+
+- follower = UserFollower.new
+= form_for follower do |f|
+  %p
+    = f.label :twitter_id
+    = f.number_field :twitter_id
+    = f.submit "Add"
