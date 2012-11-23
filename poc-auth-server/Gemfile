@@ -42,3 +42,17 @@ gem "activerecord-postgresql-adapter"
 gem "oauth2"
 gem 'unicorn'
 gem 'dalli'
+
+group :test, :development do
+  gem 'spork-rails'
+  gem "rspec-rails", "~> 2.0"
+  gem 'rspec-http', '~> 0.9'
+end
+
+group :test do
+  gem 'watchr'
+  gem 'simplecov', :require => false
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'webrat'
+end

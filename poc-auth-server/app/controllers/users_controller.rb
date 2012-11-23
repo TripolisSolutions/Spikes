@@ -1,4 +1,4 @@
-class UsersController < ApiController
+class UsersController < ApplicationController
   caches_action :show, :index
 
   # GET /users.json
@@ -20,12 +20,12 @@ class UsersController < ApiController
   def create
     #client = Client.find_by_id(params[:user]['client_id'])
     @user = User.new(params[:user])
-      if @user.save
-        expire_action action: "index"
-        render json: @user, status: :created, location: @user
-      else
-        render json: @user.errors, status: :unprocessable_entity
-      end
+    if @user.save
+      expire_action action: "index"
+      render json: @user, status: :created, location: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   # PUT /users/1
