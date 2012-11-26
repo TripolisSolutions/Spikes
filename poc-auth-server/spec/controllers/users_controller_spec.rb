@@ -66,7 +66,7 @@ describe UsersController do
 
       it "returns :created" do
         post :create, {:user => valid_attributes}, valid_session
-        response.should be_http_created
+        response.should be_created
       end
     end
 
@@ -82,7 +82,7 @@ describe UsersController do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
         post :create, {:user => { "client_id" => "invalid value" }}, valid_session
-        response.should be_http_unprocessable_entity
+        response.should be_unprocessable_entity
       end
     end
   end
@@ -108,7 +108,7 @@ describe UsersController do
       it "redirects to the user" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        response.should be_http_no_content
+        response.should be_no_content
       end
     end
 
@@ -126,7 +126,7 @@ describe UsersController do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
         put :update, {:id => user.to_param, :user => { "client_id" => "invalid value" }}, valid_session
-        response.should be_http_unprocessable_entity
+        response.should be_unprocessable_entity
       end
     end
   end
@@ -142,7 +142,7 @@ describe UsersController do
     it "redirects to the users list" do
       user = User.create! valid_attributes
       delete :destroy, {:id => user.to_param}, valid_session
-      response.should be_http_no_content
+      response.should be_no_content
     end
   end
 
