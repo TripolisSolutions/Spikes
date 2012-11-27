@@ -1,35 +1,35 @@
 <div id="tree">
   <ul id="treeData" style="display: none;">
-    <li id="id1" title="Look, a tool tip!"><a href="/groups/1">First contact group</a></li>
-    <li id="id2">Second grup</li>
-    <li id="id3">Newsletter
+    <li data="icon:false, href:'/groups/1'" id="id1" title="Look, a tool tip!"><a href="/groups/1">First contact group</a></li>
+    <li data="icon:false"id="id2">Second grup</li>
+    <li data="icon:false"id="id3">Newsletter
       <ul>
-        <li id="id3.1">Sub-item 3.1
+        <li data="icon:false" id="id3.1">Sub-item 3.1
           <ul>
-            <li id="id3.1.1">Sub-item 3.1.1</li>
-            <li id="id3.1.2">Sub-item 3.1.2</li>
+            <li data="icon:false" id="id3.1.1"><a href="/groups/311">Sub-item 3.1.1</a></li>
+            <li data="icon:false" id="id3.1.2">Sub-item 3.1.2</li>
           </ul>
         </li>
-        <li id="id3.2">Sub-item 3.2
+        <li data="icon:false" id="id3.2">Sub-item 3.2
           <ul>
-            <li id="id3.2.1">Sub-item 3.2.1</li>
-            <li id="id3.2.2">Sub-item 3.2.2</li>
+            <li data="icon:false" id="id3.2.1">Sub-item 3.2.1</li>
+            <li data="icon:false" id="id3.2.2">Sub-item 3.2.2</li>
           </ul>
         </li>
       </ul>
     </li>
-    <li id="id4" class="expanded">Group 3
+    <li data="icon:false" id="id4" class="expanded">Group 3
       <ul>
-        <li id="id4.1"  class="active focused">Sub-item 4.1
+        <li data="icon:false" id="id4.1"  class="active focused">Sub-item 4.1
           <ul>
-            <li id="id4.1.1">Sub-item 4.1.1</li>
-            <li id="id4.1.2">Sub-item 4.1.2</li>
+            <li data="icon:false" id="id4.1.1">Sub-item 4.1.1</li>
+            <li data="icon:false" id="id4.1.2">Sub-item 4.1.2</li>
           </ul>
         </li>
-        <li id="id4.2">Sub-item 4.2
+        <li data="icon:false" id="id4.2">Sub-item 4.2
           <ul>
-            <li id="id4.2.1">Sub-item 4.2.1</li>
-            <li id="id4.2.2">Sub-item 4.2.2</li>
+            <li data="icon:false" id="id4.2.1">Sub-item 4.2.1</li>
+            <li data="icon:false" id="id4.2.2">Sub-item 4.2.2</li>
           </ul>
         </li>
       </ul>
@@ -40,6 +40,17 @@
     $(function(){
         $("#tree").dynatree({
             // using default options
+            autoCollapse: true,
+            onActivate: function(node) {
+                // Use <a> href and target attributes to load the content:
+                if( node.data.href ){
+                    // Open target
+                    window.open(node.data.href, node.data.target);
+                    // or open target in iframe
+//                $("[name=contentFrame]").attr("src", node.data.href);
+                }
+            }
+
         });
     });
 </script>
