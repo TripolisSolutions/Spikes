@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PocTreeNavigation</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid" id="wrapper">
+  <%= render :partial => 'shared/header' %>
+  <div class="sidebar">
+    <div class="well">
+      <div version="2.0" id="menu">
+        <div class="workspace-select">
+          <form method="post" action="#">
+            <select  id="content" name="workspaceId">
+              <option value="">
+                Select a Database
+              </option>
+              <option selected="selected" value="11">
+                Database 11
+              </option>
+              <option value="12">
+                Database 12
+              </option>
+            </select>
+            <select  id="content" name="workspaceId">
+              <option value="">
+                Select a Workspace
+              </option>
+              <option selected="selected" value="11">
+                Workspace 11
+              </option>
+              <option value="12">
+                Workspace 12
+              </option>
+            </select>
+          </form>
+        </div>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => 'shared/main' %>
+</div>
+</body>
+</html>

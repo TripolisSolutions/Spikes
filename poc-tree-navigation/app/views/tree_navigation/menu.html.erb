@@ -1,0 +1,36 @@
+<div xid="_menu" id="amenu" class="accordion">
+  <div class="accordion-group">
+    <div id="c_message_heading" class=" accordion-heading"><a href="#c_message" data-parent="#amenu" class="accordion-toggle">All contacts</a></div>
+  </div>
+  <div class=" accordion-group">
+    <div class=" accordion-heading "><a href="#c_publication" data-parent="#amenu" data-toggle="collapse" class="accordion-toggle">Contact groups<span class="icon-plus icon-white"/></a></div>
+    <div class="accordion-body  collapse " id="c_publication">
+      <div class=" accordion-inner">
+        <%= render :partial => 'groups_as_menu' %>
+        <div><a title="Archive" href="/archive"><i class="icon-folder-close"></i> Archive</a></div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class=" accordion-group">
+    <div id="c_tweet_heading" class=" accordion-heading "><a href="/smartgroups" style="float:left;" class="accordion-link">Smart groups</a><a href="#c_tweet" data-parent="#amenu" data-toggle="collapse" class="accordion-toggle"><span class="icon-plus icon-white"/></a></div>
+    <div class=" accordion-body collapse" id="c_tweet">
+      <div class=" accordion-inner">
+            <% @smartgroups.each do |smartgroup| %>
+                <div><a href="/trisoc/outbound/11/2/tweets"><%=  smartgroup %></a></div>
+            <% end %>
+            <div><a title="Archive" href="/smartgroups/archive"><i class="icon-folder-close"></i> Archive</a></div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class=" accordion-group">
+    <div id="c_hashtag_heading" class=" accordion-heading "><a href="#c_hashtag" data-parent="#amenu" data-toggle="collapse" class="accordion-toggle">Advanced<span class="icon-plus icon-white"/></a></div>
+    <div class=" accordion-body collapse " id="c_hashtag">
+      <div class=" accordion-inner">
+        <div><a title="Suppression groups" href="/supressiongroups">Suppression groups</a></div>
+        <div><a title="Mail blacklist" href="/mailblacklist">Mail blacklist</a></div>
+      </div>
+    </div>
+  </div>
+</div>

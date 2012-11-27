@@ -1,0 +1,9 @@
+== POC/Spike for sidebar navigation in Dialogue
+
+== Variations
+1. Nested accordion
+2. Multi-level menu in accordion
+3. Tree within accordion element
+
+== Bugs
+- Multi-level menu isn't being displayed outside of the sidebar container.
