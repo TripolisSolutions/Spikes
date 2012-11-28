@@ -1,0 +1,12 @@
+.control-group
+  = f.label :question, class: 'control-label'
+  .controls
+    = f.text_field :question, class: 'text_field'
+.control-group
+  = f.label :options, class: 'control-label'
+  - options = ((@facebook_post.post || {})[:options]) || []
+  - count = options.length + 2
+  .controls
+    - count.times do |i|
+      = text_field_tag "post[options][]", options[i], class: 'text_field'
+      %br/

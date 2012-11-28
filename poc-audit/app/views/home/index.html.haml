@@ -1,0 +1,6 @@
+%h1 Audit info
+
+- @audits.each do |audit|
+  .audit{class: audit.action}
+    User #{audit.username} (#{audit.remote_address}) has #{audit.action}ed
+    #{audit.auditable_type.tableize.humanize} #{audit.auditable_id} at #{t audit.created_at}

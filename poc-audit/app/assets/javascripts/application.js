@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery.ui.all
 //= require_tree .
+
+$(function() {
+  $('.datepicker').datepicker({dateFormat: 'yy-m-d'});
+  $('.datetimepicker').datetimepicker({dateFormat: 'yy-m-d'});
+});
