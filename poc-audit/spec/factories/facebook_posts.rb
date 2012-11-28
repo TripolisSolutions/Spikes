@@ -3,9 +3,10 @@
 FactoryGirl.define do
   factory :facebook_post do
     account_id 1
-    status "MyString"
-    type ""
-    post "MyText"
+    status "MyStatus"
+    label "Label"
+    type "Type"
+    message "test"
     post_at "2012-11-26 16:02:45"
   end
 end

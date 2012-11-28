@@ -6,6 +6,7 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:account_id)
+      %th= model_class.human_attribute_name(:label)
       %th= model_class.human_attribute_name(:status)
       %th= model_class.human_attribute_name(:type)
       %th= model_class.human_attribute_name(:post_at)
@@ -15,6 +16,7 @@
       %tr
         %td= link_to facebook_post.id, facebook_post_path(facebook_post)
         %td= facebook_post.account_id
+        %td= facebook_post.label
         %td= facebook_post.status
         %td= facebook_post.type
         %td= facebook_post.post_at
