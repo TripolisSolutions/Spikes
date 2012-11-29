@@ -25,8 +25,7 @@ describe HomePageController do
         click_link("Sign out")
       end
 
-      it {
-      should have_link("Sign out") }
+      it { should have_link("Sign out") }
 
       describe "Twitter profile" do
         it { should have_selector('h2', text: 'Tripolis Solutions') }
@@ -44,16 +43,20 @@ describe HomePageController do
 
         describe "post a tweet", js: true do
 
-            before :each do
-              Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "12345") }
-              click_button "Tweet"
-            end
+          before :each do
+            Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "12345") }
+            click_button "Tweet"
+          end
 
-            it "should save the tweet locally and have the tweet id from Twitter" do
-              Tweet.find_by_status_id("12345").should_not be_nil
-            end
+          it "should save the tweet locally and have the tweet id from Twitter" do
+            Tweet.find_by_status_id("12345").should_not be_nil
+          end
 
-            it { should have_notice_message }
+          it { should have_notice_message }
+
+          after :each do
+            Tweet.delete_all
+          end
         end
 
         describe "Twitter API error", js: true do
