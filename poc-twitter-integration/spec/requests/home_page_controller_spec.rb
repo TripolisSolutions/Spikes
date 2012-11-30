@@ -64,6 +64,7 @@ describe HomePageController do
 
           before :each do
             Twitter::Client.any_instance.should_receive(:update) { raise Twitter::Error::AlreadyRetweeted }
+            fill_in "tweet_status", with: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit"
             click_button "Tweet"
           end
 
