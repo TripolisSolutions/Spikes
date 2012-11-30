@@ -29,6 +29,7 @@ group :test do
   gem 'watchr'
   gem 'simplecov', :require => false
   gem 'shoulda-matchers'
+  gem 'sqlite3'
 end
 
 gem 'jquery-rails'
