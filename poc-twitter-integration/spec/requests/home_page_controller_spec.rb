@@ -35,7 +35,7 @@ describe HomePageController do
       describe "Tweet creation" do
 
         before :each do
-          fill_in "tweet_status", with: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit"
+          get '/'
         end
 
         it { should have_field("tweet_status") }
@@ -44,6 +44,7 @@ describe HomePageController do
         describe "post a tweet", js: true do
 
           before :each do
+            fill_in "tweet_status", with: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit"
             Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "12345") }
             click_button "Tweet"
           end
