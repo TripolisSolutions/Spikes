@@ -17,6 +17,8 @@ describe HomePageController do
 
       before :each do
         mock_twitter_auth
+        @twitter = stub("twitter", trend_locations: [])
+        User.any_instance.stub(:twitter).and_return(@twitter)
         click_link("Sign in")
       end
 

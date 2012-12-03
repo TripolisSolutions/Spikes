@@ -1,25 +1,24 @@
 require 'spec_helper'
 
 describe PlacesController do
-
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
-    end
+  before :each do
+    @user = stub(:user, id: 1)
+    controller.stub(:current_user).and_return(@user)
   end
-
+  
   describe "GET 'create'" do
     it "returns http success" do
-      get 'create'
-      response.should be_success
+      twitter_mock = stub("twitter", trend_locations: [])
+      @user.stub(:twitter).and_return(twitter_mock)
+      put 'create'
+      response.should redirect_to(root_url)
     end
   end
 
-  describe "GET 'delete'" do
+  describe "GET 'destroy'" do
     it "returns http success" do
-      get 'delete'
-      response.should be_success
+      delete :destroy, id: 123
+      response.should redirect_to(root_url)
     end
   end
 

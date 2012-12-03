@@ -26,6 +26,10 @@ class PlacesController < ApplicationController
 
   end
 
-  def delete
+  def destroy
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.js #update overview of monitored places
+    end
   end
 end
