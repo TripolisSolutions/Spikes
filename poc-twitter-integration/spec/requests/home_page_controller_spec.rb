@@ -6,7 +6,7 @@ describe HomePageController do
 
   describe "on index page" do
 
-    before { visit root_path }
+    before(:each) { visit root_path }
 
     describe "a not signed-in user" do
       it {  should have_link("Sign in") }
@@ -33,11 +33,6 @@ describe HomePageController do
       end
 
       describe "Tweet creation" do
-
-        before :each do
-          get '/'
-        end
-
         it { should have_field("tweet_status") }
         it { should have_button("Tweet") }
 
@@ -47,6 +42,7 @@ describe HomePageController do
             fill_in "tweet_status", with: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit"
             Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "12345") }
             click_button "Tweet"
+            expect(:page).to have_selector('body') #synchronize
           end
 
           it "should save the tweet locally and have the tweet id from Twitter" do
