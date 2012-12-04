@@ -9,7 +9,7 @@ describe HomePageController do
     before(:each) { visit root_path }
 
     describe "a not signed-in user" do
-      it {  should have_link("Sign in") }
+      it { should have_link("Sign in") }
       it { should have_selector('h1', text: 'Please sign in first') }
     end
 
@@ -42,7 +42,7 @@ describe HomePageController do
             fill_in "tweet_status", with: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit"
             Twitter::Client.any_instance.should_receive(:update) { Twitter::Tweet.new(id: "12345") }
             click_button "Tweet"
-            expect(:page).to have_selector('body') #synchronize
+            page.should have_selector("#timeline") #Synchronize
           end
 
           it "should save the tweet locally and have the tweet id from Twitter" do
