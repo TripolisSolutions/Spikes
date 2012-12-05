@@ -3,10 +3,12 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
-require 'headless'
-h = Headless.new
-h.start
 
+if ENV["TEAMCITY_VERSION"]
+  require 'headless'
+  h = Headless.new
+  h.start
+end
 Capybara.default_driver = :selenium
 DatabaseCleaner.strategy = :truncation
 
