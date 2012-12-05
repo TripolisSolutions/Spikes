@@ -1,6 +1,13 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'minitest/reporters'
+MiniTest::Unit.runner = MiniTest::SuiteRunner.new
+if ENV["RM_INFO"] || ENV["TEAMCITY_VERSION"]
+  MiniTest::Unit.runner.reporters << MiniTest::Reporters::RubyMineReporter.new
+else
+  MiniTest::Unit.runner.reporters << MiniTest::Reporters::DefaultReporter.new
+end
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.

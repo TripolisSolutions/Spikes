@@ -1,12 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
-require 'rubygems'
-gem 'minitest' # ensures you're using the gem, and not the built in MT
-require 'minitest/autorun'
-require 'minitest/reporters'
 require 'rails/test_help'
-MiniTest::Unit.runner = MiniTest::SuiteRunner.new
-#MiniTest::Unit.runner.reporters << MiniTest::Reporters::DefaultReporter.new
+require 'minitest/reporters'
 MiniTest::Unit.runner = MiniTest::SuiteRunner.new
 if ENV["RM_INFO"] || ENV["TEAMCITY_VERSION"]
   MiniTest::Unit.runner.reporters << MiniTest::Reporters::RubyMineReporter.new
