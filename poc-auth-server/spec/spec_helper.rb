@@ -38,4 +38,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Webrat::Matchers
+  
+  config.include Devise::TestHelpers, type: :controller
 end

@@ -37,8 +37,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 gem "pg"
-gem "songkick-oauth2-provider"
 gem "activerecord-postgresql-adapter"
+gem "songkick-oauth2-provider"
 gem "oauth2"
 gem 'unicorn'
 gem 'dalli'

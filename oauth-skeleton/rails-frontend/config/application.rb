@@ -67,6 +67,8 @@ module RailsFrontend
       g.orm             false
       g.test_framework  :rspec, :fixture => false
       g.template_engine :haml
+      g.view_specs false
+      g.helper_specs false
     end
   end
 end
