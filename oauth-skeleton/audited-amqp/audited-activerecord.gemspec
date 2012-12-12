@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'https://github.com/TripolisSolutions/Spikes/tree/master/oauth-skeleton/audited_amqp'
 
   gem.add_dependency 'audited', gem.version
-  gem.add_dependency 'activerecord', '~> 3.0'
+  gem.add_dependency 'activeresource', '~> 3.0'
   gem.add_dependency 'amqp'
 
   gem.files         = `git ls-files lib`.split($\)
