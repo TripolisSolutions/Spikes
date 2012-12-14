@@ -18,6 +18,7 @@ module Audited
         define_model_callbacks :create
         define_model_callbacks :update
         define_model_callbacks :destroy
+        cattr_accessor :queue
 
         def self.belongs_to(m, options = {})
           self.class_eval <<END_BELONGS_TO
@@ -91,7 +92,7 @@ END_BELONGS_TO
 
         def save(params)
           self.created_at = Time.now
-          AMQPManager.send_message(self.to_json, nil)
+          AMQPManager.send_message(self.to_json, nil, @@queue)
         end
 
         private

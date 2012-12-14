@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name    = 'audited-amqp'
-  gem.version = '3.0.0'
+  gem.version = '3.0.1'
 
   gem.authors     = ['Brandon Keepers', 'Kenneth Kalmer', 'Daniel Morrison',
                      'Brian Ryckbost', 'Steve Richert', 'Ryan Glover', 'Alexander Borovsky']
@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.summary     = gem.description
   gem.homepage    = 'https://github.com/TripolisSolutions/Spikes/tree/master/oauth-skeleton/audited_amqp'
 
-  gem.add_dependency 'audited', gem.version
+  gem.add_dependency 'audited', "3.0.0"
   gem.add_dependency 'activeresource', '~> 3.0'
   gem.add_dependency 'amqp'
 
