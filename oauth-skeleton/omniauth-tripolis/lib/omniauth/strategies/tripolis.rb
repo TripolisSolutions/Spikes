@@ -18,6 +18,7 @@ module OmniAuth
         {
           'nickname' => raw_info['login'],
           'name' => raw_info['name'],
+          'client_id' => raw_info['info']['client']['id']
         }
       end
 

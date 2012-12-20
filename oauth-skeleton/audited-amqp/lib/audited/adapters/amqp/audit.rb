@@ -41,7 +41,7 @@ END_BELONGS_TO
         include Audited::Audit
 
         schema do
-          integer :auditable_id, :associated_id, :user_id
+          integer :auditable_id, :associated_id, :user_id, :client_id
           string :auditable_type, :associated_type, :user_type, :username
           string :action, :comment, :remote_address
           integer :version
@@ -71,6 +71,7 @@ END_BELONGS_TO
           user_id = user.id
           username = user.id
           user_type = user.model_name
+          client_id = user.client_id
         end
 
         def initialize(attrs = {}, persisted = false)

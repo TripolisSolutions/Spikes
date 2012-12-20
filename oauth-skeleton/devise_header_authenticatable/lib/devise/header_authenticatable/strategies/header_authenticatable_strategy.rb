@@ -11,11 +11,12 @@ module Devise
       # Return true or false, indicating if this strategy is applicable
       def valid?
         @uid = env['HTTP_X_USER']
-        !!@uid
+        @client_id = env['HTTP_X_CLIENT']
+        !!@uid && !!@client_id
       end
 
       def authenticate!
-        resource = mapping.to.find( @uid )
+        resource = mapping.to.find(@uid, params: {client_id: @client_id} )
         if validate(resource)
           success! resource
         elsif !halted?
