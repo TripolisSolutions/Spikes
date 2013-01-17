@@ -1,6 +1,8 @@
 PocPhraseDemo::Application.routes.draw do
-  resources :posts
-
-
   root :to => "home#index"
+  match '/:locale' => "home#index"
+
+  scope "(:locale)", :locale => /en|de/ do
+    resources :posts
+  end
 end

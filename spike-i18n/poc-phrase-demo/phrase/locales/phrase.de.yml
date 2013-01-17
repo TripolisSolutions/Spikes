@@ -1,0 +1,9 @@
+---
+de:
+  home:
+    index:
+      welcome_text: Willkommen zur Vorbildanwendung.
+  helpers:
+    label:
+      post:
+        content: Inhalt

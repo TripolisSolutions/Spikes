@@ -1,0 +1,11 @@
+---
+en:
+  hello: Hello world
+  home:
+    index:
+      welcome_text: Welcome to the sample app.
+      about_us: Some thing about us.
+  helpers:
+    label:
+      post:
+        content: Content
