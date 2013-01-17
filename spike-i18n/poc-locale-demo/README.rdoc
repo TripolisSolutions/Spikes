@@ -1,6 +1,6 @@
 == POC Locale Demo
 
-Simple Rails apps demonstrating the integration of Locale (http://www.localeapp.com/) to manage i18n localizations in an Rails application.
+Simple Rails apps demonstrating the integration of Locale (http://www.localeapp.com/) to manage i18n localizations in a Rails application.
 
 The localeapp gem manages the yaml files in /confic/locales.
 
