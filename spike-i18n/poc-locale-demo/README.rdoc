@@ -1,0 +1,11 @@
+== POC Locale Demo
+
+Simple Rails apps demonstrating the integration of Locale (http://www.localeapp.com/) to manage i18n localizations in an Rails application.
+
+The localeapp gem manages the yaml files in /confic/locales.
+
+As dev@tripolis.com using your GitHub account sign in at http://www.localeapp.com/ to translate.
+
+Model names and attributes are not being recorgnized automatically and have to be added manually as described by the Rails i18n documentation.
+
+Default Rails scaffolding doens't use localized strings in generated views.

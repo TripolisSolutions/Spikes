@@ -1,0 +1,5 @@
+<h1><%=  t '.title' %></h1>
+<p><%= t '.welcome_message' %></p>
+<p><%= link_to t('my_blog'), posts_path %></p>
+
+<p><%= link_to t('German'), root_path(:locale => :de) %> | <%= link_to t('English'), root_path(:locale => :en) %></p>
