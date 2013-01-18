@@ -3,7 +3,4 @@
 Phrase is a powerful in-place translation management for your web applications.
 https://phraseapp.com
 
-Status:
-
-Integration is not working yet. Followed all instrcutions but it fails with an error.
-Support ticket filed.
+As POC uses a time limited trial, you'd have to start a trial and update the tolken in .phrase and phrase.rb to use this POC.
