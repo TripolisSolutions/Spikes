@@ -4,6 +4,7 @@ de:
     index:
       welcome_text: Willkommen zur Vorbildanwendung.
       about_us: Does this look German to you? 维基百科
+      title: Willkommen zu unserer Anwendung
   helpers:
     label:
       post:

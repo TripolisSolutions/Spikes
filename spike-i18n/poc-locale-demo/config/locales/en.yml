@@ -4,6 +4,7 @@ en:
     index:
       welcome_message: Welcome to the demo app.
       title: Demo App
+      introduction: Introduction text
   number:
     human:
       decimal_units:

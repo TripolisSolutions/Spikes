@@ -5,6 +5,7 @@ en:
     index:
       welcome_text: Welcome to the sample app.
       about_us: Some thing about us.
+      title: Welcome to my app
   helpers:
     label:
       post:

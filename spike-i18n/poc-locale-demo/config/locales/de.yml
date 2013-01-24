@@ -142,7 +142,8 @@ de:
   home:
     index:
       welcome_message: Willkommen zur Vorbildanwendung.
-      title: 
+      title: Titel der Seite
+      introduction: 
   number:
     currency:
       format:
