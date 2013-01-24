@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PocMultitenant</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><%= link_to "Posts", posts_path %></li>
+        <li><%= link_to "Databases", databases_path %></li>
+      </ul>
+    </nav>
+
+    <%= yield %>
+    <p>Current shard: <%= current_shard %></p>
+    <p>Status: <%= Octopus.enabled? %></p>
+    <p>Environments: <%= Octopus.environments %></p>
+  </body>
+</html>
