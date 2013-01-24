@@ -1,0 +1,7 @@
+= widget_div do
+  %h1
+    Header
+  %p
+    - for widget in children
+      = render_widget widget
+

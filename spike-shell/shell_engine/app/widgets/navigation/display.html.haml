@@ -1,0 +1,6 @@
+= widget_div do
+  .nav
+    = semantic_navigation :primary, config: :bootstrap, class: 'my-navigation' do |n|
+      - n.item 'Dashboard', root_path
+      - n.item 'Social', "http://social"
+      - n.item 'Profile', "...edit profile"

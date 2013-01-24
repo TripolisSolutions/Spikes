@@ -1,0 +1,5 @@
+= ShellEngine
+
+Rails Engine to provide layout and common features to host web-apps.
+
+For the views http://apotomo.de/ widgets are being used.
