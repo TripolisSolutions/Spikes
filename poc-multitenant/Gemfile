@@ -13,6 +13,6 @@ end
 
 gem 'jquery-rails'
 
-gem 'ar-octopus', git: "git://github.com/tchandy/octopus.git", require: "octopus"
+gem 'ar-octopus', git: "https://github.com/borovsky/octopus", require: "octopus"
 
 gem "pg"

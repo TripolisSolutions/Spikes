@@ -6,12 +6,19 @@ class ApplicationController < ActionController::Base
 
   protected
   def select_shard(&block)
-    setup_shard(current_shard)
-    Octopus.using(current_shard, &block)
+    if current_shard == :master
+      logger.info "No shard setted up"
+      block.call
+    else
+      p env
+      setup_shard(current_shard)
+      logger.info "Using shard: #{current_shard}"
+      Octopus.using(current_shard, &block)
+    end
   end
 
   def current_shard
-    session[:shard] || :default
+    session[:shard] || :master
   end
 
   def current_shard=(shard)
@@ -19,11 +26,11 @@ class ApplicationController < ActionController::Base
   end
 
   def setup_shard(shard)
-    return if shard == :default
+    return if shard == :master
 
     Octopus.setup do |config|
       shards = {
-        default: default_shard_config,
+        master: default_shard_config,
       }
       shards[current_shard] = current_shard if current_shard.kind_of? String
 

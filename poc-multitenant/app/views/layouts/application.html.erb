@@ -15,7 +15,8 @@
     </nav>
 
     <%= yield %>
-    <p>Current shard: <%= current_shard %></p>
+    <p>Current shard (session): <%= current_shard %></p>
+    <p>Current shard (real): <%= Post.connection.current_shard %></p>
     <p>Status: <%= Octopus.enabled? %></p>
     <p>Environments: <%= Octopus.environments %></p>
   </body>

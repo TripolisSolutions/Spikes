@@ -1,4 +1,6 @@
 class CreatePosts < ActiveRecord::Migration
+  using_all_shards
+  
   def change
     create_table :posts do |t|
       t.string :title

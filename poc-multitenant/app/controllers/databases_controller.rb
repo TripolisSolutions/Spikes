@@ -2,7 +2,7 @@ class DatabasesController < ApplicationController
   # GET /databases
   # GET /databases.json
   def index
-    @databases = Database.using(:default).all
+    @databases = Database.using(:master).all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class DatabasesController < ApplicationController
   # GET /databases/1
   # GET /databases/1.json
   def show
-    @database = Database.find(params[:id])
+    @database = Database.using(:master).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,13 +34,13 @@ class DatabasesController < ApplicationController
 
   # GET /databases/1/edit
   def edit
-    @database = Database.find(params[:id])
+    @database = Database.using(:master).find(params[:id])
   end
 
   # POST /databases
   # POST /databases.json
   def create
-    @database = Database.new(params[:database])
+    @database = Database.using(:master).new(params[:database])
 
     respond_to do |format|
       if @database.save
@@ -56,7 +56,7 @@ class DatabasesController < ApplicationController
   # PUT /databases/1
   # PUT /databases/1.json
   def update
-    @database = Database.find(params[:id])
+    @database = Database.using(:master).find(params[:id])
 
     respond_to do |format|
       if @database.update_attributes(params[:database])
@@ -72,7 +72,7 @@ class DatabasesController < ApplicationController
   # DELETE /databases/1
   # DELETE /databases/1.json
   def destroy
-    @database = Database.find(params[:id])
+    @database = Database.using(:master).find(params[:id])
     @database.destroy
 
     respond_to do |format|
@@ -82,7 +82,7 @@ class DatabasesController < ApplicationController
   end
 
   def select
-    @database = Database.find(params[:id])
+    @database = Database.using(:master).find(params[:id])
     self.current_shard = @database.url
     session[:a] = 123
     p session

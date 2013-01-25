@@ -10,7 +10,7 @@
   </tr>
 
 <% @databases.each do |database| %>
-  <tr>
+  <tr class="<%= database.url == current_shard ? 'active' : '' %>">
     <td><%= database.url %></td>
     <td><%= database.active %></td>
     <td><%= link_to 'Show', database %></td>
