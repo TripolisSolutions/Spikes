@@ -1,7 +1,7 @@
 = widget_div do
   %h2
-    UserWidget
+    Users
   %ul
     - for user in @users
       %li
-        = user.name
+        #{link_to user.name, "mailto:" + user.email}

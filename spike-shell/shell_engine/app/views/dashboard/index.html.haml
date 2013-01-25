@@ -1,8 +1,8 @@
-.header
-  = render_widget :header
-%h1 Dashboard
-#dashboard
-  .sidebar
-    = render_widget :sidebar
-  .column
-    = render_widget :main
+.container-fluid
+  .row-fluid
+    .span2
+      .sidebar
+        = render_widget :sidebar
+    .span10
+      .main
+        = render_widget :main

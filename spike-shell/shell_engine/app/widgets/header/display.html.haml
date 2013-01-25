@@ -1,7 +1,6 @@
 = widget_div do
-  %h1
-    Header
-  %p
-    - for widget in children
-      = render_widget widget
+  .navbar.navbar-inverse
+    .navbar-inner
+      - for widget in children
+        = render_widget widget
 

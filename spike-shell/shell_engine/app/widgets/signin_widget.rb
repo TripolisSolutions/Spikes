@@ -1,4 +1,4 @@
-class IdeaWidget < Apotomo::Widget
+class SigninWidget < Apotomo::Widget
 
   def display
     render

@@ -1,0 +1,7 @@
+= widget_div do
+  %h2
+    New Idea
+  %div
+    = form_for :idea, :url => url_for_event(:submit), :remote => true do |f|
+      = f.text_field 'text'
+      = submit_tag "Save new idea!"

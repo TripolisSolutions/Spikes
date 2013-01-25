@@ -1,0 +1,6 @@
+= widget_div do
+  %h2
+    Ideas
+  %ul
+    - for idea in @ideas
+      = render :view => :idea, :locals => {:idea => idea}

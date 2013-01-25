@@ -7,5 +7,6 @@ class DashboardController < ApplicationController
   end
 
   def index
+    #signed_in?
   end
 end
