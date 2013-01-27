@@ -3,3 +3,18 @@
 Rails Engine to provide layout and common features to host web-apps.
 
 For the views http://apotomo.de/ widgets are being used.
+
+== Problems encountered and not solved
+
+Twitter-bootstrap-rails generator fails with error
+rails generate bootstrap:install static
+undefined method `config' for nil:NilClass (NoMethodError)
+
+== TODO
+
+Add 1st and 2nd level navigation framework for host applications with role/plan/feature based authorization rules.
+
+== Improvements
+
+Widgets in their containers (:sidebar,...) are now being rendered in the order they appear in the hash. 
+Some mechanism for sorting (e.g. weight or position) would be good for dynamic and flexible widget display.

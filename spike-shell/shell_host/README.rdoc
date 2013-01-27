@@ -1,0 +1,27 @@
+== Shell host application
+
+This simple Rails application uses the Rails Engine we created for the shell.
+
+gem 'shell_engine', path: "../shell_engine/"
+
+Next to adding the shell engine some changes are necessary to make it work:
+1. ApplicationController must extend ShellApplicationController.
+2. set layout to 'shell' in ApplicatioController or delete/rename application.html.erb
+3. If the host app needs seed data from the engine, add ShellEngine::Engine.load_seed to seeds.rb of the host.
+
+== Getting Started
+
+1. Copy the migrations of the engine to the host:
+       rake shell_engine_engine:install:migrations
+
+2. Execute the migrations as usual:
+       rake db:migrate
+
+3. Execute db:seed to load the seed data that is included in the engine.
+
+
+== Problems encountered and not solved
+
+- Inlcuding engine assets of plugins (e.g. bootstrap) results in path not found.
+
+

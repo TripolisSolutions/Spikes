@@ -1,12 +1,13 @@
 class DashboardController < ApplicationController
+
+  # Here we specify the main content. The dashboard could use a combination of widget, both from
+  # the shell engine as well as the host application.
   has_widgets do |root|
-    root << widget(:header)
-    root << widget(:sidebar)
     root << widget(:main)
-    # In contrast to the manual, you can not add children to a container here.
   end
 
   def index
-    #signed_in?
+
   end
+
 end

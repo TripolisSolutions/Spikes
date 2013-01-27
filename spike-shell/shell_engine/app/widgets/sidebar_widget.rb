@@ -5,6 +5,7 @@ class SidebarWidget < Apotomo::Widget
     if parent_controller.signed_in?
       me << widget(:idea_form)
     end
+    me << widget(:user)
   end
 
   def display
