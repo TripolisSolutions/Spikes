@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
+  resources :themes, only: [:create]
+
 end

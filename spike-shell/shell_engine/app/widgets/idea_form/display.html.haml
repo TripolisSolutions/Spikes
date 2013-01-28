@@ -4,4 +4,4 @@
   %div
     = form_for :idea, :url => url_for_event(:submit), :remote => true do |f|
       = f.text_field 'text'
-      = submit_tag "Save new idea!"
+      = submit_tag "Save new idea!", class: 'btn btn-primary'

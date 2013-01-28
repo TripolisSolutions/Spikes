@@ -26,6 +26,15 @@
       end
     end
 
+    def active_theme
+      @active_theme = cookies[:shell_theme] ||= 'default'
+    end
+
+    def switch_theme_to(theme_name)
+      @active_theme = theme_name
+      cookies.permanent[:shell_theme] = theme_name
+    end
+
   end
 
 

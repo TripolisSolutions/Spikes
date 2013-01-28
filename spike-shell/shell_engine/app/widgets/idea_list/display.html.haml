@@ -1,6 +1,6 @@
 = widget_div do
   %h2
     Ideas
-  %ul
+  %table.table
     - for idea in @ideas
       = render :view => :idea, :locals => {:idea => idea}

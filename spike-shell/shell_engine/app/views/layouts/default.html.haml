@@ -1,6 +1,6 @@
 %html
 %head
-  = stylesheet_link_tag "shell_engine/shell"
+  = stylesheet_link_tag "shell_engine/themes/default/default.css"
   = stylesheet_link_tag "application"
 
 %body
@@ -16,6 +16,8 @@
         .row-fluid
           .span3
             .sidebar
+              = render_widget :session
+              = render_widget :theme_select
               = render_widget :sidebar
           .span9
             .main
