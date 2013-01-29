@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Idea:</b>
+  <%= @idea.text %>
+</p>
+
+<p>
+  <b>By:</b>
+  <%= @idea.user.name %>
+  <%= @idea.user.email %>
+</p>
+
+<%= link_to 'Back', dashboard_ideas_path %>

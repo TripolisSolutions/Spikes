@@ -1,4 +1,13 @@
 ShellHost::Application.routes.draw do
+
+  namespace :web do
+    match '/', to: 'dashboard#index'
+    resources :pages
+    resources :posts
+  end
+
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

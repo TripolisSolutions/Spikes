@@ -10,6 +10,7 @@ class ApplicationController < ShellApplicationController
 
   has_widgets do |root|
       # here we add a widget to the sidebar, managed and provided by the Shell engine.
+      root.childrenHash[:subnavigation] << widget(:web_navigation)
       root.childrenHash[:sidebar] << widget(:aboutme)
   end
 

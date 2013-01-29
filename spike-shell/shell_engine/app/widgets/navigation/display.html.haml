@@ -1,5 +1,6 @@
-= widget_div do
-  = semantic_navigation :primary, config: :bootstrap, class: 'my-navigation' do |n|
-    - n.item 'Dashboard', root_path
-    - n.item 'Social', "http://social"
-    - n.item 'Profile', "...edit profile"
+= semantic_navigation :primary, config: :bootstrap, class: '' do |n|
+  - n.item 'Dashboard', root_path, highlights_on: [{controller: 'dashboard'},/^\/dashboard/]
+  - if signed_in?
+    - n.item 'Web', "http://127.0.0.1:3000/web", highlights_on: /^\/web/
+    - n.item 'Social', "http://127.0.0.1:3001/social", highlights_on: /^\/social/
+    - n.item 'Email', "http://127.0.0.1:3002/email", highlights_on: /^\/email/

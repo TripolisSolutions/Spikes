@@ -1,0 +1,31 @@
+!!! 5
+%html
+  %head
+    %title
+      Tripolis Web
+    = stylesheet_link_tag "shell_engine/themes/cyborg/cyborg.css"
+    = stylesheet_link_tag "application"
+  %body
+    .row-fluid
+      .span12
+        = render_widget :header
+        .container-fluid
+          .row-fluid
+            .span3
+              .sidebar
+                = render_widget :subnavigation
+                = render_widget :theme_select
+                = render_widget :sidebar
+                = render_widget :session
+            .span9
+              .main
+                - [:notice, :error, :message].each do |key|
+                  - unless flash[key].blank?
+                    %div{ :class => "alert alert-#{key}" }
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      = flash[key]
+                = yield
+
+
+
+    = javascript_include_tag "shell_engine/shell"

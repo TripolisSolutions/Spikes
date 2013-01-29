@@ -1,0 +1,20 @@
+%h1 Listing posts
+
+%table.table.table-hover
+  %tr
+    %th Name
+    %th Title
+    %th
+
+  - @posts.each do |post|
+    %tr
+      %td= post.name
+      %td= post.title
+      %td
+        = link_to 'Show', web_post_path(post), :class => 'btn btn-mini'
+        = link_to 'Edit', edit_web_post_path(post), :class => 'btn btn-mini'
+        = link_to 'Destroy', web_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+
+%br
+
+= link_to 'New Post', new_web_post_path, :class => 'btn btn-primary'

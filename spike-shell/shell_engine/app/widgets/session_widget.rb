@@ -1,11 +1,7 @@
 class SessionWidget < Apotomo::Widget
 
   def display
-    if parent_controller.signed_in?
-      self << widget(:signout)
-    else
-      self << widget(:signin)
-    end
+    self << widget(:signin) unless parent_controller.signed_in?
     render
   end
 

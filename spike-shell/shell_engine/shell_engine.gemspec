@@ -22,5 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "haml-rails"
   s.add_dependency "navigasmic"
   s.add_dependency 'uglifier'
+  s.add_dependency 'simple_form'
+  s.add_dependency 'cancan'
   s.add_development_dependency "sqlite3"
 end

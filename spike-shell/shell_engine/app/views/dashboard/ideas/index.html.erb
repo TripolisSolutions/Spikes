@@ -1,0 +1,21 @@
+<h1>Listing ideas</h1>
+
+<table class="table table-hover">
+  <tr>
+    <th>Idea</th>
+    <th>From</th>
+    <th></th>
+  </tr>
+
+<% @ideas.each do |idea| %>
+  <tr>
+    <td><%= idea.text %></td>
+    <td><%= idea.user.name %></td>
+    <td>
+      <%= link_to 'Show', dashboard_idea_path(idea), class: "btn btn-mini"  %>
+      <%= link_to 'Destroy', dashboard_idea_path(idea), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

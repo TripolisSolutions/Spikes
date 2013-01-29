@@ -8,6 +8,7 @@ class ShellApplicationController < ActionController::Base
       root << widget(:header)
       root << widget(:session)
       root << widget(:theme_select)
+      root << widget(:subnavigation)
       root << widget(:sidebar)
   end
 

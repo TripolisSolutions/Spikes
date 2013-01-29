@@ -1,0 +1,24 @@
+%h1 Listing pages
+
+%table.table.table-hover
+  %tr
+    %th Name
+    %th Title
+    %th Content
+    %th
+    %th
+    %th
+
+  - @pages.each do |page|
+    %tr
+      %td= page.name
+      %td= page.title
+      %td= page.content
+      %td
+        = link_to 'Show', web_page_path(page), :class => 'btn btn-mini'
+        = link_to 'Edit', edit_web_page_path(page), :class => 'btn btn-mini'
+        = link_to 'Destroy', web_page_path(page), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+
+%br
+
+= link_to 'New Page', new_web_page_path, class: 'btn btn-primary'
