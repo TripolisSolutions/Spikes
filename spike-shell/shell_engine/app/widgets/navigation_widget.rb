@@ -1,6 +1,5 @@
 class NavigationWidget < Apotomo::Widget
 
-  include CancanWidgetHelper
   helper_method :can?
 
   helper_method :signed_in?
@@ -11,6 +10,14 @@ class NavigationWidget < Apotomo::Widget
 
   def signed_in?
     parent_controller.signed_in?
+  end
+
+  def can?(action, object)
+    current_ability.can? action, object
+  end
+
+  def current_ability
+    ::Ability.new parent_controller.current_user
   end
 
 end
