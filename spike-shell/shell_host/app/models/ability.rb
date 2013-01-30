@@ -1,15 +1,27 @@
-class Ability
+class Ability < Shell_Ability
+
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    user ||= User.new # guest user (not logged in)
-       if user
-         can :manage, Idea
-          #   else
-    #     can :read, :all
-       end
+
+    super(user)
+
+    #user ||= User.new # guest user (not logged in)
+    if user
+      if user.features.include?('web')
+        can :access, DashboardController
+        if user.features.include?('posts')
+          can :manage, Post
+        end
+        if user.features.include?('pages')
+          can :manage, Page
+        end
+      end
+      #   else
+      #     can :read, :all
+    else
+      # guest user
+    end
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

@@ -1,4 +1,7 @@
 class Web::PagesController < ApplicationController
+
+  load_and_authorize_resource
+
   # GET /pages
   # GET /pages.json
   def index

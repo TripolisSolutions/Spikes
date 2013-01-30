@@ -1,4 +1,7 @@
 class Dashboard::IdeasController < DashboardController
+
+  load_and_authorize_resource
+
   # GET /ideas
   # GET /ideas.json
   def index

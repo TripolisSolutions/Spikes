@@ -1,3 +1,5 @@
 = semantic_navigation :secondary, config: :bootstrap, class: ' nav-tabs nav-stacked' do |n|
-  - n.item 'Posts', controller: web_posts_path
-  - n.item 'Pages', controller: web_pages_path
+  - if can? :manage, Post
+    - n.item 'Posts', controller: web_posts_path
+  - if can? :manage, Page
+    - n.item 'Pages', controller: web_pages_path
