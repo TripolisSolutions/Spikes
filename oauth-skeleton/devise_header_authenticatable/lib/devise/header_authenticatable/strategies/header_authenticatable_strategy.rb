@@ -16,12 +16,14 @@ module Devise
       end
 
       def authenticate!
-        resource = mapping.to.find(@uid, params: {client_id: @client_id} )
+        resource = mapping.to.find(@uid, params: {client_id: @client_id})
         if validate(resource)
           success! resource
         elsif !halted?
           fail(:invalid_token)
         end
+      rescue ActiveResource::ResourceNotFound
+        fail :invalid_token
       end
 
       # Do not store Header validation in session.
