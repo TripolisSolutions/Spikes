@@ -6,11 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-tennantA = Tennant.create(name:"Tennant A")
-tennantB = Tennant.create(name:"Tennant B")
-tennantC = Tennant.create(name:"Tennant C")
-
-
 10.times do |x|
    contact = Contact.new(first_name:"Contact#{x}", last_name:"TennantA", middle_name:"of", suffix:"", gender:"M", date_of_birth: "01-01-2013")
    contact.email_addresses.build(email:"test#{x}@mongodbtest.com",active: true)
@@ -18,9 +13,7 @@ tennantC = Tennant.create(name:"Tennant C")
    contact.addresses.build(street_name:"TestStraat", house_number:"222", zip_code:"1001AA", city:"Amsterdam", province:"Noord-Holland", country:"NL")
    contact.websites.build(url:"http://www.google.nl")
    contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
-   contact.save!
-   tennantA.contacts << contact
-   tennantA.save!
+   contact.with(collection: "tenantA").save!
 end
 
 10.times do |x|
@@ -30,9 +23,7 @@ end
   contact.addresses.build(street_name:"TestStraat", house_number:"222", zip_code:"1001AA", city:"Amsterdam", province:"Noord-Holland", country:"NL")
   contact.websites.build(url:"http://www.google.nl")
   contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
-  contact.save!
-  tennantB.contacts << contact
-  tennantB.save!
+  contact.with(collection: "tenantB").save!
 end
 
 10.times do |x|
@@ -42,7 +33,5 @@ end
   contact.addresses.build(street_name:"TestStraat", house_number:"222", zip_code:"1001AA", city:"Amsterdam", province:"Noord-Holland", country:"NL")
   contact.websites.build(url:"http://www.google.nl")
   contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
-  contact.save!
-  tennantC.contacts << contact
-  tennantC.save!
+  contact.with(collection: "tenantC").save!
 end
