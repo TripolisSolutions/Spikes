@@ -20,6 +20,7 @@ tennantC = Tennant.create(name:"Tennant C")
    contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
    contact.save!
    tennantA.contacts << contact
+   tennantA.save!
 end
 
 10.times do |x|
@@ -31,6 +32,7 @@ end
   contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
   contact.save!
   tennantB.contacts << contact
+  tennantB.save!
 end
 
 10.times do |x|
@@ -42,4 +44,5 @@ end
   contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
   contact.save!
   tennantC.contacts << contact
+  tennantC.save!
 end
