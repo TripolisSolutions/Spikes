@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-tennantA = Tennant.new(name:"Tennant A")
-tennantB = Tennant.new(name:"Tennant B")
-tennantC = Tennant.new(name:"Tennant C")
+tennantA = Tennant.create(name:"Tennant A")
+tennantB = Tennant.create(name:"Tennant B")
+tennantC = Tennant.create(name:"Tennant C")
 
 
 10.times do |x|
@@ -18,6 +18,7 @@ tennantC = Tennant.new(name:"Tennant C")
    contact.addresses.build(street_name:"TestStraat", house_number:"222", zip_code:"1001AA", city:"Amsterdam", province:"Noord-Holland", country:"NL")
    contact.websites.build(url:"http://www.google.nl")
    contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
+   contact.save!
    tennantA.contacts << contact
 end
 
@@ -28,6 +29,7 @@ end
   contact.addresses.build(street_name:"TestStraat", house_number:"222", zip_code:"1001AA", city:"Amsterdam", province:"Noord-Holland", country:"NL")
   contact.websites.build(url:"http://www.google.nl")
   contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
+  contact.save!
   tennantB.contacts << contact
 end
 
@@ -38,5 +40,6 @@ end
   contact.addresses.build(street_name:"TestStraat", house_number:"222", zip_code:"1001AA", city:"Amsterdam", province:"Noord-Holland", country:"NL")
   contact.websites.build(url:"http://www.google.nl")
   contact.channels.build(channel_id: 12345678,channel_type: "Facebook")
+  contact.save!
   tennantC.contacts << contact
 end
