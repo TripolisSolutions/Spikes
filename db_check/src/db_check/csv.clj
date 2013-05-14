@@ -8,16 +8,20 @@
   (let [l (.readLine r)]
     (if l
       (cons (line-to-csv l) (lazy-seq (read-csv r)))
-      nil)))
+      (.close r))))
 
-(defn each-file-block [size f]
-  (with-open [r (io/reader "data/result.csv")]
+(defn- to-blocks
+  [size data idx]
+  (if-not (empty? data)
+    (let [[h t] (split-at size data)]
+      (println (* size idx))
+      (cons h (lazy-seq (to-blocks size t (inc idx)))))))
+
+(defn read-csv-blocks
+  "Represents CSV file as lazy sequence of blocks of size"
+   [size]
+  (let [r (io/reader "data/result.csv")]
     (let [c (read-csv r)
           h (first c)
           data  (map (partial zipmap h) (rest c))]
-      (loop [data data idx 0]
-        (if-not (empty? data)
-          (let [ [h t] (split-at size data)]
-            (println (* size idx))
-            (f h)
-            (recur t (+ idx 1))))))))
+      (to-blocks size data 0))))

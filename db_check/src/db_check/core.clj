@@ -9,4 +9,5 @@
   (alter-var-root #'*read-eval* (constantly false))
 
   (m/check)
-  (pg/check))
+  (pg/check)
+  (println "test"))
