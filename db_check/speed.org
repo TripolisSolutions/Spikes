@@ -1,0 +1,36 @@
+* Speed results
+
+** Common:
+- 10 million contacts each with 2 addresses
+- Pure CSV parse take 6.5 mins (1 process)
+- In ruby just CSV parsing takes 45 minutes
+
+** Mongo
+Mongo import takes 17 minutes
+Mongo import + ElasticSearch import takes 53 minutes
+
+Database Size:
+
+
+** PostgreSQL
+
+Used schema with 5 tables: contacts, addresses, phones, websites, email_addresses
+
+*** Import speed
+**** Basic indexes:
+
+- Default postgres config: 26 minutes
+
+- Memory increased (10 times): 16 minutes
+
+**** Full index
+- Indexes before data load - 39 minutes
+- Indexes after data load - 35 minutes
+
+Database size:
+| contacts        | 2956 MB |
+| addresses       | 2402 MB |
+| email_addresses | 1948 MB |
+| websites        | 1726 MB |
+|-----------------+---------|
+| Total           | 9032 MB |
