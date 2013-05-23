@@ -51,12 +51,6 @@
                       [:id :bigserial]
                       [:contact_id :bigint "REFERENCES contacts(id)"]
                       [:email "varchar(255)"])
-      (j/do-commands
-       "create index addresses_contacts_idx on addresses(contact_id)"
-       "create index phones_contacts_idx on phones(contact_id)"
-       "create index websites_contacts_idx on websites(contact_id)"
-       "create index email_addresses_contacts_idx on email_addresses(contact_id)")
-
       (catch Exception e (j/print-sql-exception-chain e)))
     ))
 
@@ -113,15 +107,35 @@
          )
         (catch java.sql.SQLException e (j/print-sql-exception-chain e))))))
 
+(defn- create-indexes
+  []
+  (j/with-connection db
+    (try
+      (j/do-commands
+       "create index contacts_day_of_birth_idx on contacts(day_of_birth)"
+       "create index contacts_first_name_idx on contacts using gist(first_name gist_trgm_ops)"
+       "create index contacts_last_name_idx on contacts using gist(last_name gist_trgm_ops)"
+       "create index contacts_middle_name_idx on contacts using gist(middle_name gist_trgm_ops)"
+
+       "create index addresses_contacts_idx on addresses(contact_id)"
+
+       "create index phones_contacts_idx on phones(contact_id)"
+       "create index websites_contacts_idx on websites(contact_id)"
+       "create index email_addresses_contacts_idx on email_addresses(contact_id)")
+      (catch Exception e (j/print-sql-exception-chain e)))
+    ))
+
 (defn check
   "Checks PostgreSQL import performance"
   []
 
   (init)
-  ;(. System (exit 0))
-  (->>
-   (csv/read-csv "data/result.csv")
-   (util/to-blocks 10000)
-   (pmap process-block)
-   dorun
-   time))
+                                        ;(. System (exit 0))
+  (time
+   (do
+     (->>
+      (csv/read-csv "data/result.csv")
+      (util/to-blocks 10000)
+      (pmap process-block)
+      dorun)
+     (create-indexes))))
