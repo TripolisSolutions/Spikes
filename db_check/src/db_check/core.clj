@@ -8,6 +8,6 @@
   ;; work around dangerous default behaviour in Clojure
   (alter-var-root #'*read-eval* (constantly false))
 
-  (m/check)
+  ;(m/check)
   (pg/check)
   (println "test"))
