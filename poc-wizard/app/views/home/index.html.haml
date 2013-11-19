@@ -1,0 +1,66 @@
+%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal"}
+  Launch demo modal
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4.modal-title Simple Wizard
+      .modal-body
+        %div{"ng-controller" => "SampleWizardController", "rc-disabled" => "rc.firstForm.submitInProgress", "rc-wizard" => "sampleWizard"}
+          %ul.nav.rc-nav-wizard
+            %li.active
+              %a.active{"data-toggle" => "tab", href: "#first"}
+                %span.badge 1
+                %span First Step
+            %li
+              %a{"data-toggle" => "tab", href: "#second"}
+                %span.badge 2
+                %span Second Step
+            %li
+              %a{"data-toggle" => "tab", href: "#last"}
+                %span.badge 3
+                %span Last Step
+          .tab-content
+            %form#first.tab-pane.active{name: "firstForm", novalidate: "", "rc-step" => "", "rc-submit" => "saveState()"}
+              %h2 Enter first step data
+              .form-group{"ng-class" => "{'has-error': rc.firstForm.needsAttention(firstForm.firstName)}"}
+                %label.control-label First Name
+                %input.form-control{name: "firstName", "ng-model" => "user.firstName", required: "", type: "text"}/
+              .form-group{"ng-class" => "{'has-error': rc.firstForm.needsAttention(firstForm.lastName)}"}
+                %label.control-label Last Name
+                %input.form-control{name: "lastName", "ng-model" => "user.lastName", required: "", type: "text"}/
+            %form#second.tab-pane{name: "secondForm", "rc-step" => "", "rc-submit" => ""}
+              %h2 Enter second step data
+              .form-group
+                %label.control-label Street Address
+                %input.form-control{name: "streetAddress", "ng-model" => "user.streetAddress", type: "text"}/
+              .form-group
+                %label.control-label City
+                %input.form-control{name: "city", "ng-model" => "user.city", type: "text"}/
+              .form-group
+                %label.control-label State
+                %input.form-control{name: "state", "ng-model" => "user.state", type: "text"}/
+              .form-group
+                %label.control-label City
+                %input.form-control{name: "postalCode", "ng-model" => "user.postalCode", type: "text"}/
+            %form#last.tab-pane{name: "lastForm", "rc-step" => "", "rc-submit" => "completeWizard()"}
+              %h2 Finish last step
+              .form-group
+                %label.control-label First Name:
+                %p.form-control-static
+              .form-group
+                %label.control-label Last Name:
+                %p.form-control-static
+              .form-group
+                %label.control-label Address:
+                %p.form-control-static
+
+                  %br/
+                  ,
+          .modal-footer
+            .form-group
+              .pull-right
+                %a.btn.btn-default{"ng-click" => "rc.sampleWizard.backward()", "ng-show" => "rc.sampleWizard.currentIndex > rc.sampleWizard.firstIndex"} Back
+                %a.btn.btn-primary{"data-loading-text" => "Please Wait...", "ng-click" => "rc.sampleWizard.forward()", "ng-show" => "rc.sampleWizard.currentIndex < rc.sampleWizard.navigationLength"} Continue
+                %a.btn.btn-primary{"ng-click" => "rc.sampleWizard.forward()", "ng-show" => "rc.sampleWizard.currentIndex == rc.sampleWizard.navigationLength"} Complete
