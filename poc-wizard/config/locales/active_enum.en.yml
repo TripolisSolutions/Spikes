@@ -1,0 +1,67 @@
+en:
+  active_enum:
+    company_size:
+      small: Small
+      medium: Medium
+      large: Large
+
+    industry:
+      contractor: Contractor
+      education: Education
+      services: Services
+      automotive: Automotive
+
+    job_type:
+      request: Request
+      offer: Offer
+      external: External
+
+    occupation:
+      it: It professional
+      sales: Sales
+      finance: Finance
+
+    user_role:
+      admin: Administrator
+      manager: Manager
+      employee: Employee
+
+    employee_status:
+      active_internal: Active internal
+      active_external: Active external
+      inactive: Inactive
+      available: Available
+      not_available: Not available
+
+    gender:
+      male: Male
+      female: Female
+
+    # Place enum translations for each name defined in the enum
+    # 
+    #   class Sex < ActiveEnum::Base
+    #     value 1 => 'male'
+    #     value 2 => 'female'
+    #   end
+    # 
+    # is defined as 
+    #
+    # sex:
+    #   male: Male 
+    #   female: Female 
+    #
+    # For namesapced enums in a model
+    #
+    #   class Person < ActiveRecord::Base
+    #     enumerate :sex do
+    #       value 1 => 'male'
+    #       value 2 => 'female'
+    #     end
+    #   end
+    #
+    # Nest the translations under the underscored model name
+    #  
+    # person:
+    #   sex:
+    #     male: Male 
+    #     female: Female 
