@@ -1,6 +1,10 @@
-%button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal"}
-  Launch demo modal
-#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+.jumbotron
+  .container
+    %h1 Welcome to the wizard poc
+    %p Dicit signiferumque ne usu. Ei vim aliquip mandamus, eius augue urbanitas sit et. Adhuc scribentur disputationi vel an, no eam legimus commune, mel at corpora blandit adipisci. Eius nemore usu ad, putant appellantur mea ea.
+    %button.btn.btn-primary.btn-lg{"data-target" => "#myModal", "data-toggle" => "modal"} Launch wizard
+
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1", 'data-backdrop' => 'static'}
   .modal-dialog
     .modal-content
       .modal-header
@@ -22,42 +26,12 @@
                 %span.badge 3
                 %span Last Step
           .tab-content
-            %form#first.tab-pane.active{name: "firstForm", novalidate: "", "rc-step" => "", "rc-submit" => "saveState()"}
-              %h2 Enter first step data
-              .form-group{"ng-class" => "{'has-error': rc.firstForm.needsAttention(firstForm.firstName)}"}
-                %label.control-label First Name
-                %input.form-control{name: "firstName", "ng-model" => "user.firstName", required: "", type: "text"}/
-              .form-group{"ng-class" => "{'has-error': rc.firstForm.needsAttention(firstForm.lastName)}"}
-                %label.control-label Last Name
-                %input.form-control{name: "lastName", "ng-model" => "user.lastName", required: "", type: "text"}/
-            %form#second.tab-pane{name: "secondForm", "rc-step" => "", "rc-submit" => ""}
-              %h2 Enter second step data
-              .form-group
-                %label.control-label Street Address
-                %input.form-control{name: "streetAddress", "ng-model" => "user.streetAddress", type: "text"}/
-              .form-group
-                %label.control-label City
-                %input.form-control{name: "city", "ng-model" => "user.city", type: "text"}/
-              .form-group
-                %label.control-label State
-                %input.form-control{name: "state", "ng-model" => "user.state", type: "text"}/
-              .form-group
-                %label.control-label City
-                %input.form-control{name: "postalCode", "ng-model" => "user.postalCode", type: "text"}/
-            %form#last.tab-pane{name: "lastForm", "rc-step" => "", "rc-submit" => "completeWizard()"}
-              %h2 Finish last step
-              .form-group
-                %label.control-label First Name:
-                %p.form-control-static
-              .form-group
-                %label.control-label Last Name:
-                %p.form-control-static
-              .form-group
-                %label.control-label Address:
-                %p.form-control-static
+            = render 'form1'
+            = render 'form2'
+            = render 'form3'
 
-                  %br/
-                  ,
+
+
           .modal-footer
             .form-group
               .pull-right

@@ -1,0 +1,14 @@
+%form#second.tab-pane{name: "secondForm", "rc-step" => "", "rc-submit" => ""}
+  %h2 Enter second step data
+  .form-group
+    %label.control-label Street Address
+    %input.form-control{name: "streetAddress", "ng-model" => "user.streetAddress", type: "text"}/
+  .form-group
+    %label.control-label City
+    %input.form-control{name: "city", "ng-model" => "user.city", type: "text"}/
+  .form-group
+    %label.control-label State
+    %input.form-control{name: "state", "ng-model" => "user.state", type: "text"}/
+  .form-group
+    %label.control-label City
+    %input.form-control{name: "postalCode", "ng-model" => "user.postalCode", type: "text"}/

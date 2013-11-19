@@ -1,0 +1,8 @@
+%form#first.tab-pane.active{name: "firstForm", novalidate: "", "rc-step" => "", "rc-submit" => "saveState()"}
+  %h2 Enter first step data
+  .form-group{"ng-class" => "{'has-error': rc.firstForm.needsAttention(firstForm.firstName)}"}
+    %label.control-label First Name
+    %input.form-control{name: "firstName", "ng-model" => "user.firstName", required: "", type: "text"}/
+  .form-group{"ng-class" => "{'has-error': rc.firstForm.needsAttention(firstForm.lastName)}"}
+    %label.control-label Last Name
+    %input.form-control{name: "lastName", "ng-model" => "user.lastName", required: "", type: "text"}/
